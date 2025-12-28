@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 1.1: Introduction to AI & ML - Week 1 - AI Engineering Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/shared.css">
+    
+    <style>
+        .content-page {
+            padding-top: 6rem;
+        }
+
+        .session-hero {
+            background: var(--surface);
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .session-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .session-badge {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .duration-badge {
+            background: var(--surface-light);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .session-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .session-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 800px;
+        }
+
+        .topics-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .topic-card {
+            background: var(--background);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-card);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .topic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .topic-number {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            min-width: fit-content;
+        }
+
+        .topic-duration {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .topic-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .topic-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .topic-objectives {
+            background: var(--surface);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .topic-objectives h4 {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .topic-objectives ul {
+            margin: 0;
+            padding-left: 1.2rem;
+            list-style-type: none;
+        }
+
+        .topic-objectives li {
+            margin-bottom: 0.3rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .topic-objectives li::before {
+            content: '→';
+            position: absolute;
+            left: -1rem;
+            color: var(--accent-color);
+        }
+
+        .session-progress {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .progress-title {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .progress-stats {
+            font-family: 'Space Mono', monospace;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            background: var(--background);
+            border-radius: 8px;
+            height: 8px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: var(--gradient-primary);
+            height: 100%;
+            border-radius: 8px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .navigation-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .nav-button.back {
+            background: var(--surface);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-button.next {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .nav-button.back:hover {
+            color: var(--text-primary);
+        }
+
+        .session-info {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .session-info h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .info-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .session-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .topic-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .navigation-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="content-page">
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <a href="../../../" class="logo">AI Engineering</a>
+            <ul class="nav-links">
+                <li><a href="../../../#overview">Overview</a></li>
+                <li><a href="../../../#curriculum">Curriculum</a></li>
+                <li><a href="../../../#features">Features</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="../../../">Home</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="../">Week 1</a>
+            <span class="breadcrumb-separator">→</span>
+            <span class="breadcrumb-current">Session 1.1</span>
+        </div>
+    </div>
+
+    <!-- Session Hero -->
+    <section class="session-hero">
+        <div class="container">
+            <div class="session-meta">
+                <span class="session-badge">Week 1, Session 1.1</span>
+                <span class="duration-badge">70 minutes total</span>
+            </div>
+            <h1 class="session-title section-title">Introduction to AI & Machine Learning</h1>
+            <p class="session-description">
+                Welcome to your AI journey! This foundational session introduces you to artificial intelligence 
+                and machine learning concepts that will be essential throughout the course. We'll explore what AI 
+                really is, how machines learn, and the fundamental approaches that power modern AI systems.
+            </p>
+        </div>
+    </section>
+
+    <!-- Session Overview -->
+    <section class="content-section">
+        <div class="container">
+            <div class="session-info">
+                <h3>Session Overview</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-value">3</span>
+                        <div class="info-label">Topics Covered</div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-value">70 min</span>
+                        <div class="info-label">Total Duration</div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-value">Interactive</span>
+                        <div class="info-label">Learning Format</div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-value">Beginner</span>
+                        <div class="info-label">Difficulty Level</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Tracking -->
+    <section class="content-section">
+        <div class="container">
+            <div class="session-progress">
+                <div class="progress-header">
+                    <div class="progress-title">Session Progress</div>
+                    <div class="progress-stats" id="progress-stats">0 of 3 topics completed</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topics Grid -->
+    <section class="content-section">
+        <div class="container">
+            <h2>Session Topics</h2>
+            <div class="topics-grid">
+                <!-- Topic 1: What is AI? -->
+                <a href="topic1.html" class="topic-card" data-topic="1">
+                    <div class="topic-header">
+                        <span class="topic-number">Topic 1</span>
+                        <span class="topic-duration">20 minutes</span>
+                    </div>
+                    <h3 class="topic-title">What is Artificial Intelligence?</h3>
+                    <p class="topic-description">
+                        Start your AI journey by understanding what artificial intelligence really is. We'll demystify AI, 
+                        explore its different types, and examine real-world applications that you interact with daily.
+                    </p>
+                    <div class="topic-objectives">
+                        <h4>Learning Objectives</h4>
+                        <ul>
+                            <li>Define artificial intelligence in simple terms</li>
+                            <li>Distinguish between different types of AI</li>
+                            <li>Recognize AI applications in everyday life</li>
+                            <li>Understand the current state and future potential of AI</li>
+                        </ul>
+                    </div>
+                </a>
+
+                <!-- Topic 2: Machine Learning Fundamentals -->
+                <a href="topic2.html" class="topic-card" data-topic="2">
+                    <div class="topic-header">
+                        <span class="topic-number">Topic 2</span>
+                        <span class="topic-duration">30 minutes</span>
+                    </div>
+                    <h3 class="topic-title">Machine Learning Fundamentals</h3>
+                    <p class="topic-description">
+                        Dive deep into how machines actually learn. Understand the three types of machine learning, 
+                        the complete ML workflow, and essential terminology that forms the foundation of modern AI.
+                    </p>
+                    <div class="topic-objectives">
+                        <h4>Learning Objectives</h4>
+                        <ul>
+                            <li>Explain how ML differs from traditional programming</li>
+                            <li>Distinguish between supervised, unsupervised, and reinforcement learning</li>
+                            <li>Understand the ML workflow from data to predictions</li>
+                            <li>Recognize key ML terminology and concepts</li>
+                        </ul>
+                    </div>
+                </a>
+
+                <!-- Topic 3: Deep Learning Introduction -->
+                <div class="topic-card" style="opacity: 0.6; pointer-events: none;">
+                    <div class="topic-header">
+                        <span class="topic-number" style="background: var(--text-muted);">Topic 3</span>
+                        <span class="topic-duration">20 minutes</span>
+                    </div>
+                    <h3 class="topic-title">Deep Learning Introduction</h3>
+                    <p class="topic-description">
+                        Explore the neural networks that power modern AI breakthroughs. Learn about deep learning 
+                        architecture, understand how neural networks mimic the brain, and see real-world applications.
+                    </p>
+                    <div class="topic-objectives">
+                        <h4>Learning Objectives</h4>
+                        <ul>
+                            <li>Understand neural networks and deep learning basics</li>
+                            <li>Learn how deep learning differs from traditional ML</li>
+                            <li>Explore deep learning applications</li>
+                            <li>Prepare for hands-on neural network building</li>
+                        </ul>
+                    </div>
+                    <div style="text-align: center; margin-top: 1rem; color: var(--text-muted); font-style: italic;">
+                        Coming Soon
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Session Learning Goals -->
+    <section class="content-section">
+        <div class="container">
+            <div class="highlight-box">
+                <h3>What You'll Achieve This Session</h3>
+                <p>By the end of Session 1.1, you will have:</p>
+                <ul class="styled-list">
+                    <li><strong>Solid Foundation:</strong> Clear understanding of AI vs ML vs Deep Learning</li>
+                    <li><strong>Practical Knowledge:</strong> Ability to identify which ML approach fits different problems</li>
+                    <li><strong>Technical Vocabulary:</strong> Comfort with essential AI/ML terminology</li>
+                    <li><strong>Real-World Perspective:</strong> Recognition of AI applications in daily life and industry</li>
+                    <li><strong>Ready for Coding:</strong> Conceptual preparation for hands-on implementation in Session 1.2</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="content-section">
+        <div class="container">
+            <div class="navigation-section">
+                <a href="../" class="nav-button back">
+                    ← Back to Week 1 Overview
+                </a>
+                <div style="text-align: center; color: var(--text-muted);">
+                    <strong>Next Session:</strong> Python for AI & First ML Project
+                </div>
+                <div class="nav-button next" style="opacity: 0.5; pointer-events: none;">
+                    Session 1.2 → (Coming Soon)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>
+                    <strong>Week 1, Session 1.1: Introduction to AI & Machine Learning</strong><br>
+                    Part of the AI Engineering Course - 6-Week Intensive Curriculum
+                </p>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+                    © 2024 AI Engineering Course. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../../assets/js/navigation.js"></script>
+    <script>
+        // Progress tracking functionality
+        function updateProgress() {
+            const topics = document.querySelectorAll('.topic-card[data-topic]');
+            let completedCount = 0;
+            
+            // Check localStorage for completed topics
+            if (window.CourseNavigation && window.CourseNavigation.courseProgress) {
+                const progress = window.CourseNavigation.courseProgress();
+                
+                topics.forEach(topic => {
+                    const topicNum = parseInt(topic.dataset.topic);
+                    if (progress.isTopicComplete(1, 1, topicNum)) {
+                        completedCount++;
+                        topic.style.opacity = '0.8';
+                        topic.style.borderColor = 'var(--accent-color)';
+                        
+                        // Add completed indicator
+                        if (!topic.querySelector('.completed-indicator')) {
+                            const indicator = document.createElement('div');
+                            indicator.className = 'completed-indicator';
+                            indicator.innerHTML = '✓ Completed';
+                            indicator.style.cssText = `
+                                position: absolute;
+                                top: 1rem;
+                                right: 1rem;
+                                background: var(--accent-color);
+                                color: white;
+                                padding: 0.25rem 0.5rem;
+                                border-radius: 4px;
+                                font-size: 0.7rem;
+                                font-weight: 600;
+                            `;
+                            topic.style.position = 'relative';
+                            topic.appendChild(indicator);
+                        }
+                    }
+                });
+            }
+            
+            // Update progress display
+            const totalTopics = topics.length;
+            const progressPercent = (completedCount / totalTopics) * 100;
+            
+            document.getElementById('progress-stats').textContent = 
+                `${completedCount} of ${totalTopics} topics completed`;
+            document.getElementById('progress-fill').style.width = `${progressPercent}%`;
+        }
+
+        // Initialize progress tracking
+        document.addEventListener('DOMContentLoaded', updateProgress);
+        
+        // Update progress when returning to this page
+        window.addEventListener('focus', updateProgress);
+    </script>
+</body>
+</html>

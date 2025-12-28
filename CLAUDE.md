@@ -73,7 +73,8 @@ file:///path/to/ai-engineering-course/index.html
 - **Shared Styles**: `assets/css/shared.css` - Unified CSS variables and components
 - **Shared Scripts**: `assets/js/navigation.js` - Common JavaScript functionality
 - **Week Content**: `weeks/week[N]/index.html` - Week overview pages
-- **Session Content**: `weeks/week[N]/session[N]-[N]/topic[N].html` - Detailed lessons
+- **Session Hubs**: `weeks/week[N]/session[N]-[N]/index.html` - Session overview with topic navigation
+- **Topic Content**: `weeks/week[N]/session[N]-[N]/topic[N].html` - Individual lesson pages
 - **Project Pages**: `weeks/week[N]/project.html` - Project guides and deliverables
 - **Source Content**: `course-content/` - Original markdown files
 
@@ -90,31 +91,57 @@ file:///path/to/ai-engineering-course/index.html
 - `.instructor-notes` - Teaching tips and pacing information
 - `.visual-aid` - Custom visual content containers
 
+#### Session & Topic Navigation Components
+- `.session-hero` - Session overview header with metadata
+- `.topics-grid` - Grid layout for topic cards within sessions
+- `.topic-card` - Individual topic navigation cards with objectives
+- `.session-progress` - Progress tracking bar for session completion
+- `.topic-navigation` - Previous/next navigation between topics
+- `.ml-workflow-diagram` - Visual workflow representations
+- `.algorithm-grid` - Algorithm overview card layouts
+
 #### Navigation Components
-- `.breadcrumb` - Hierarchical navigation paths
+- `.breadcrumb` - Hierarchical navigation paths (Course → Week → Session → Topic)
 - `.progress-indicator` - Reading progress tracking
 - Sticky navigation with backdrop blur effects
 
 ### Path Structure Conventions
-- Relative paths from week content: `../../../assets/css/shared.css`
-- Relative paths from session content: `../../../../assets/css/shared.css`
+- Relative paths from week content: `../../assets/css/shared.css`
+- Relative paths from session index: `../../../assets/css/shared.css`
+- Relative paths from topic content: `../../../../assets/css/shared.css`
 - All paths relative to maintain GitHub Pages compatibility
+
+### Navigation Hierarchy
+The site follows a 4-level hierarchical structure:
+1. **Course Level** (`index.html`) - Main course overview
+2. **Week Level** (`weeks/week[N]/index.html`) - Week overview with session cards
+3. **Session Level** (`weeks/week[N]/session[N]-[N]/index.html`) - Session overview with topic grid
+4. **Topic Level** (`weeks/week[N]/session[N]-[N]/topic[N].html`) - Individual lesson content
 
 ## Content Management
 
 ### Adding New Content
 
-#### For New Topics/Sessions
-1. Create directory: `weeks/week[N]/session[N]-[N]/`
+#### For New Topics Within Existing Sessions
+1. Create new topic file: `weeks/week[N]/session[N]-[N]/topic[X].html`
 2. Copy template structure from existing topic files
-3. Update breadcrumb navigation and relative paths
-4. Follow component class conventions for content structure
+3. Update session index page to include new topic card
+4. Update navigation links in adjacent topics
+5. Follow component class conventions for content structure
+
+#### For New Sessions
+1. Create session directory: `weeks/week[N]/session[N]-[N]/`
+2. Create session index page with topic grid layout
+3. Create individual topic files within session directory
+4. Update week overview page to include new session card
+5. Maintain proper breadcrumb and navigation structure
 
 #### For New Weeks
 1. Create week directory: `weeks/week[N]/`
 2. Add week overview page using existing week templates
-3. Update main navigation in `index.html`
-4. Maintain consistent URL and linking structure
+3. Update main course navigation in `index.html`
+4. Create session subdirectories following naming conventions
+5. Maintain consistent URL and linking structure
 
 ### Content Conversion Guidelines
 - Convert markdown headers to appropriate HTML semantic structure
@@ -184,11 +211,14 @@ ai-engineering-course/
 │   └── week1/                             # Week 1: AI Fundamentals
 │       ├── index.html                     # Week overview page
 │       ├── project.html                   # Detailed project guide
-│       └── session1-1/                    # Session 1.1 content
-│           └── topic1.html                # "What is AI?" - full lesson content
+│       └── session1-1/                    # Session 1.1: Introduction to AI & ML
+│           ├── index.html                 # Session overview with topic navigation
+│           ├── topic1.html                # Topic 1: "What is AI?"
+│           └── topic2.html                # Topic 2: "Machine Learning Fundamentals"
 │
 └── course-content/                        # Source markdown files
-    └── Week1_Session1.1_Topic1_What_is_AI.md  # Original content source
+    ├── Week1_Session1.1_Topic1_What_is_AI.md           # Original content sources
+    └── Week1_Session1.1_Topic2_Machine_Learning_Fundamentals.md
 ```
 
 ## AI Agent Implementation Instructions
@@ -226,8 +256,9 @@ Follow Cyber Academic aesthetic direction:
 
 **For Multi-Page Implementation (Current Architecture):**
 - **Main Hub** (`index.html`) - Course overview with week cards
-- **Week Pages** (`weeks/week[N]/index.html`) - Week overviews
-- **Session Pages** (`weeks/week[N]/session[N]-[N]/topic[N].html`) - Detailed lessons
+- **Week Pages** (`weeks/week[N]/index.html`) - Week overviews with session cards  
+- **Session Hubs** (`weeks/week[N]/session[N]-[N]/index.html`) - Session overviews with topic navigation
+- **Topic Pages** (`weeks/week[N]/session[N]-[N]/topic[N].html`) - Individual lesson content
 - **Project Pages** (`weeks/week[N]/project.html`) - Project guides
 
 #### Step 4: Content Integration Algorithm
