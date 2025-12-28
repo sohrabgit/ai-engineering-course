@@ -3,16 +3,16 @@ AI ENGINEERING COURSE WEBSITE
 Generated: December 28, 2024
 
 DEPLOYMENT INSTRUCTIONS:
-1. Save this file as 'index.html'
+1. Save this file as 'index.html' in your repository root
 2. Create a GitHub repository
-3. Upload this file to the repository
+3. Upload all files maintaining the directory structure
 4. Enable GitHub Pages in Settings > Pages
 5. Select 'main' branch and '/ (root)' folder
 6. Your site will be live at: https://username.github.io/repo-name/
 
 CUSTOMIZATION:
-- Edit CSS variables in the :root section to change colors
-- Modify content directly in HTML sections
+- Edit CSS variables in assets/css/shared.css to change colors
+- Modify content directly in individual HTML files
 - Add your own images by uploading to repo and updating src paths
 
 BROWSER COMPATIBILITY:
@@ -29,110 +29,10 @@ BROWSER COMPATIBILITY:
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/shared.css">
     
     <style>
-        :root {
-            --primary-color: #00d4ff;
-            --secondary-color: #7c3aed;
-            --accent-color: #10b981;
-            --background: #0a0a0f;
-            --surface: #1a1a2e;
-            --surface-light: #16213e;
-            --text-primary: #ffffff;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --border-color: #374151;
-            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-            --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.3);
-            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter Display', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--background);
-            color: var(--text-primary);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 15, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-family: 'Space Mono', monospace;
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
+        /* Page-specific styles */
         .hero {
             padding: 8rem 0 4rem;
             text-align: center;
@@ -155,25 +55,6 @@ BROWSER COMPATIBILITY:
         .hero-content {
             position: relative;
             z-index: 2;
-        }
-
-        .hero h1 {
-            font-family: 'Space Mono', monospace;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .hero .subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease 0.2s both;
         }
 
         .hero-stats {
@@ -204,28 +85,6 @@ BROWSER COMPATIBILITY:
             letter-spacing: 0.1em;
         }
 
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: var(--gradient-primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-glow);
-            animation: fadeInUp 0.8s ease 0.6s both;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
-        }
-
-        /* Overview Section */
         .overview {
             padding: 4rem 0;
             background: var(--surface);
@@ -235,13 +94,6 @@ BROWSER COMPATIBILITY:
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-family: 'Space Mono', monospace;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            margin-bottom: 1rem;
-            color: var(--text-primary);
         }
 
         .section-subtitle {
@@ -258,40 +110,14 @@ BROWSER COMPATIBILITY:
             margin-top: 3rem;
         }
 
-        .overview-card {
-            background: var(--surface-light);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-
-        .overview-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary-color);
-            box-shadow: var(--shadow-card);
-        }
-
-        .overview-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .overview-card p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Curriculum Section */
         .curriculum {
             padding: 4rem 0;
         }
 
         .week-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
             margin-top: 3rem;
         }
 
@@ -299,178 +125,60 @@ BROWSER COMPATIBILITY:
             background: var(--surface);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            overflow: hidden;
+            padding: 2rem;
             transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .week-card:hover {
+            transform: translateY(-4px);
             border-color: var(--primary-color);
             box-shadow: var(--shadow-card);
-        }
-
-        .week-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 2rem;
-            cursor: pointer;
-            background: var(--surface-light);
-            transition: all 0.3s ease;
-        }
-
-        .week-header:hover {
-            background: var(--surface);
-        }
-
-        .week-title {
-            font-family: 'Space Mono', monospace;
-            font-size: 1.4rem;
-            color: var(--text-primary);
-            margin: 0;
+            text-decoration: none;
         }
 
         .week-number {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .toggle-btn {
-            background: none;
-            border: none;
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .week-card.active .toggle-btn {
-            transform: rotate(180deg);
-        }
-
-        .week-content {
-            padding: 0 2rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .week-card.active .week-content {
-            padding: 0 2rem 2rem;
-            max-height: 2000px;
-        }
-
-        .objectives {
-            margin-bottom: 2rem;
-        }
-
-        .objectives h4 {
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .objectives ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .objectives li {
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .objectives li::before {
-            content: '▸';
-            color: var(--primary-color);
-            position: absolute;
-            left: 0;
-        }
-
-        .lecture-section {
-            background: var(--background);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--border-color);
-        }
-
-        .lecture-title {
-            color: var(--text-primary);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .lecture-duration {
             font-family: 'Space Mono', monospace;
             font-size: 0.9rem;
-            color: var(--text-muted);
-            background: var(--surface);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-        }
-
-        .topic-list {
-            list-style: none;
-            padding-left: 0;
-            margin: 1rem 0;
-        }
-
-        .topic-list li {
-            color: var(--text-secondary);
-            padding: 0.25rem 0;
-            padding-left: 1rem;
-            position: relative;
-        }
-
-        .topic-list li::before {
-            content: '•';
-            color: var(--accent-color);
-            position: absolute;
-            left: 0;
-        }
-
-        .project-section {
-            background: var(--surface-light);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 1.5rem;
-            border-left: 4px solid var(--accent-color);
-        }
-
-        .project-title {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .deliverables {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .deliverables li {
-            color: var(--text-secondary);
-            margin: 0.5rem 0;
-            padding-left: 2rem;
-            position: relative;
-        }
-
-        .deliverables li::before {
-            content: '☐';
             color: var(--primary-color);
-            position: absolute;
-            left: 0;
-            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
-        /* Features Section */
+        .week-title {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 0.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .week-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .week-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        .sessions-count {
+            color: var(--text-muted);
+        }
+
+        .duration {
+            color: var(--accent-color);
+            font-family: 'Space Mono', monospace;
+        }
+
         .features {
             padding: 4rem 0;
             background: var(--surface);
@@ -511,60 +219,8 @@ BROWSER COMPATIBILITY:
             margin-bottom: 1rem;
         }
 
-        /* Footer */
-        footer {
-            background: var(--background);
-            padding: 3rem 0 2rem;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-        }
-
-        .footer-content {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .footer-content a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .footer-content a:hover {
-            text-decoration: underline;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
         /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .nav-content {
-                padding: 1rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
             .hero {
                 padding: 6rem 0 3rem;
             }
@@ -580,33 +236,8 @@ BROWSER COMPATIBILITY:
                 grid-template-columns: 1fr;
             }
 
-            .week-header {
-                padding: 1rem;
-            }
-
-            .week-content {
-                padding: 0 1rem;
-            }
-
-            .week-card.active .week-content {
-                padding: 0 1rem 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .week-title {
-                font-size: 1.1rem;
-            }
-
-            .lecture-title {
-                font-size: 1rem;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
+            .week-cards {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -615,7 +246,7 @@ BROWSER COMPATIBILITY:
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-content">
-            <div class="logo">AI Engineering</div>
+            <a href="./" class="logo">AI Engineering</a>
             <ul class="nav-links">
                 <li><a href="#overview">Overview</a></li>
                 <li><a href="#curriculum">Curriculum</a></li>
@@ -646,7 +277,7 @@ BROWSER COMPATIBILITY:
                     </div>
                 </div>
 
-                <a href="#curriculum" class="cta-button">
+                <a href="#curriculum" class="btn btn-primary">
                     Explore Curriculum →
                 </a>
             </div>
@@ -665,18 +296,24 @@ BROWSER COMPATIBILITY:
             </div>
 
             <div class="overview-grid">
-                <div class="overview-card">
-                    <h3>Progressive Learning</h3>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Progressive Learning</h3>
+                    </div>
                     <p>Start with AI fundamentals and build up to advanced concepts like deep learning, 
                     neural networks, and practical AI applications.</p>
                 </div>
-                <div class="overview-card">
-                    <h3>Hands-on Projects</h3>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Hands-on Projects</h3>
+                    </div>
                     <p>Apply your knowledge immediately with coding exercises, real datasets, 
                     and industry-relevant projects that build your portfolio.</p>
                 </div>
-                <div class="overview-card">
-                    <h3>Industry Focus</h3>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Industry Focus</h3>
+                    </div>
                     <p>Learn the tools and techniques used by AI engineers at leading tech companies, 
                     with emphasis on practical implementation.</p>
                 </div>
@@ -695,366 +332,83 @@ BROWSER COMPATIBILITY:
             </div>
 
             <div class="week-cards">
-                <!-- Week 1 -->
-                <div class="week-card">
-                    <div class="week-header">
-                        <h3 class="week-title">
-                            <span class="week-number">Week 1:</span> AI Fundamentals & Machine Learning Basics
-                        </h3>
-                        <button class="toggle-btn">▼</button>
+                <a href="./weeks/week1/" class="week-card">
+                    <div class="week-number">Week 1</div>
+                    <h3 class="week-title">AI Fundamentals & Machine Learning Basics</h3>
+                    <p class="week-description">
+                        Start your AI journey by understanding what artificial intelligence really is, 
+                        explore different types of AI, and dive into machine learning fundamentals.
+                    </p>
+                    <div class="week-stats">
+                        <span class="sessions-count">2 Sessions</span>
+                        <span class="duration">110 min total</span>
                     </div>
-                    <div class="week-content">
-                        <div class="objectives">
-                            <h4>Learning Objectives</h4>
-                            <ul>
-                                <li>Define artificial intelligence in simple terms</li>
-                                <li>Distinguish between different types of AI</li>
-                                <li>Recognize AI applications in everyday life</li>
-                                <li>Understand the current state and future potential of AI</li>
-                            </ul>
-                        </div>
+                </a>
 
-                        <div class="lecture-section">
-                            <div class="lecture-title">
-                                Session 1.1: What is Artificial Intelligence?
-                                <span class="lecture-duration">20 min</span>
-                            </div>
-                            <ul class="topic-list">
-                                <li>Defining AI and its core components</li>
-                                <li>Three levels of AI: Narrow, General, and Super AI</li>
-                                <li>Real-world AI applications across industries</li>
-                                <li>Current capabilities and limitations</li>
-                            </ul>
-                            <p><strong>Hands-on Activity:</strong> AI recognition exercise with real-world examples</p>
-                        </div>
-
-                        <div class="lecture-section">
-                            <div class="lecture-title">
-                                Session 1.2: Machine Learning Fundamentals
-                                <span class="lecture-duration">90 min</span>
-                            </div>
-                            <ul class="topic-list">
-                                <li>Introduction to Machine Learning concepts</li>
-                                <li>Supervised vs Unsupervised vs Reinforcement Learning</li>
-                                <li>Data preprocessing and feature engineering</li>
-                                <li>Model training and evaluation basics</li>
-                            </ul>
-                            <p><strong>Hands-on Activity:</strong> Build your first ML model with Python and scikit-learn</p>
-                        </div>
-
-                        <div class="project-section">
-                            <h4 class="project-title">Week 1 Project: AI Landscape Analysis</h4>
-                            <p>Research and present on AI applications in your industry of interest.</p>
-                            <ul class="deliverables">
-                                <li>Identify 3 AI use cases in chosen industry</li>
-                                <li>Analyze one use case in detail</li>
-                                <li>Create presentation summarizing findings</li>
-                                <li>Set up Python development environment</li>
-                            </ul>
-                        </div>
+                <a href="./weeks/week2/" class="week-card">
+                    <div class="week-number">Week 2</div>
+                    <h3 class="week-title">Data Science & Python for AI</h3>
+                    <p class="week-description">
+                        Master Python fundamentals for AI, work with data using NumPy and Pandas, 
+                        and learn exploratory data analysis techniques.
+                    </p>
+                    <div class="week-stats">
+                        <span class="sessions-count">2 Sessions</span>
+                        <span class="duration">180 min total</span>
                     </div>
-                </div>
+                </a>
 
-                <!-- Week 2 -->
-                <div class="week-card">
-                    <div class="week-header">
-                        <h3 class="week-title">
-                            <span class="week-number">Week 2:</span> Data Science & Python for AI
-                        </h3>
-                        <button class="toggle-btn">▼</button>
+                <a href="./weeks/week3/" class="week-card">
+                    <div class="week-number">Week 3</div>
+                    <h3 class="week-title">Supervised Learning Algorithms</h3>
+                    <p class="week-description">
+                        Implement classification and regression algorithms, learn model evaluation, 
+                        and build end-to-end machine learning pipelines.
+                    </p>
+                    <div class="week-stats">
+                        <span class="sessions-count">2 Sessions</span>
+                        <span class="duration">180 min total</span>
                     </div>
-                    <div class="week-content">
-                        <div class="objectives">
-                            <h4>Learning Objectives</h4>
-                            <ul>
-                                <li>Master Python fundamentals for data science</li>
-                                <li>Work with NumPy, Pandas, and Matplotlib</li>
-                                <li>Understand data preprocessing techniques</li>
-                                <li>Perform exploratory data analysis</li>
-                            </ul>
-                        </div>
+                </a>
 
-                        <div class="lecture-section">
-                            <div class="lecture-title">
-                                Session 2.1: Python for Data Science
-                                <span class="lecture-duration">90 min</span>
-                            </div>
-                            <ul class="topic-list">
-                                <li>Python essentials: lists, dictionaries, functions</li>
-                                <li>NumPy for numerical computing</li>
-                                <li>Pandas for data manipulation</li>
-                                <li>Data loading and basic operations</li>
-                            </ul>
-                            <p><strong>Hands-on Activity:</strong> Data manipulation exercises with real datasets</p>
-                        </div>
-
-                        <div class="lecture-section">
-                            <div class="lecture-title">
-                                Session 2.2: Exploratory Data Analysis
-                                <span class="lecture-duration">90 min</span>
-                            </div>
-                            <ul class="topic-list">
-                                <li>Data visualization with Matplotlib and Seaborn</li>
-                                <li>Statistical summaries and distributions</li>
-                                <li>Identifying patterns and outliers</li>
-                                <li>Data quality assessment</li>
-                            </ul>
-                            <p><strong>Hands-on Activity:</strong> Complete EDA on a business dataset</p>
-                        </div>
-
-                        <div class="project-section">
-                            <h4 class="project-title">Week 2 Project: Data Analysis Portfolio</h4>
-                            <p>Complete comprehensive analysis of a real-world dataset.</p>
-                            <ul class="deliverables">
-                                <li>Clean and preprocess raw dataset</li>
-                                <li>Create visualizations showing key insights</li>
-                                <li>Write summary of findings and recommendations</li>
-                                <li>Document code in Jupyter notebook</li>
-                            </ul>
-                        </div>
+                <a href="./weeks/week4/" class="week-card">
+                    <div class="week-number">Week 4</div>
+                    <h3 class="week-title">Deep Learning & Neural Networks</h3>
+                    <p class="week-description">
+                        Understand neural network fundamentals, build deep learning models with TensorFlow, 
+                        and work with convolutional neural networks for computer vision.
+                    </p>
+                    <div class="week-stats">
+                        <span class="sessions-count">2 Sessions</span>
+                        <span class="duration">180 min total</span>
                     </div>
-                </div>
+                </a>
 
-                <!-- Week 3 -->
-                <div class="week-card">
-                    <div class="week-header">
-                        <h3 class="week-title">
-                            <span class="week-number">Week 3:</span> Supervised Learning Algorithms
-                        </h3>
-                        <button class="toggle-btn">▼</button>
+                <a href="./weeks/week5/" class="week-card">
+                    <div class="week-number">Week 5</div>
+                    <h3 class="week-title">Natural Language Processing</h3>
+                    <p class="week-description">
+                        Process and analyze text data, build NLP models for classification, 
+                        and work with large language models and APIs.
+                    </p>
+                    <div class="week-stats">
+                        <span class="sessions-count">2 Sessions</span>
+                        <span class="duration">180 min total</span>
                     </div>
-                    <div class="week-content">
-                        <div class="objectives">
-                            <h4>Learning Objectives</h4>
-                            <ul>
-                                <li>Implement classification and regression algorithms</li>
-                                <li>Understand model evaluation metrics</li>
-                                <li>Apply cross-validation and hyperparameter tuning</li>
-                                <li>Build end-to-end ML pipelines</li>
-                            </ul>
-                        </div>
+                </a>
 
-                        <div class="lecture-section">
-                            <div class="lecture-title">
-                                Session 3.1: Classification Algorithms
-                                <span class="lecture-duration">90 min</span>
-                            </div>
-                            <ul class="topic-list">
-                                <li>Linear and Logistic Regression</li>
-                                <li>Decision Trees and Random Forests</li>
-                                <li>Support Vector Machines</li>
-                                <li>Model evaluation and selection</li>
-                            </ul>
-                            <p><strong>Hands-on Activity:</strong> Build classification models for customer churn prediction</p>
-                        </div>
-
-                        <div class="lecture-section">
-                            <div class="lecture-title">
-                                Session 3.2: Model Optimization & Deployment Prep
-                                <span class="lecture-duration">90 min</span>
-                            </div>
-                            <ul class="topic-list">
-                                <li>Feature selection and engineering</li>
-                                <li>Hyperparameter optimization</li>
-                                <li>Cross-validation strategies</li>
-                                <li>Model persistence and versioning</li>
-                            </ul>
-                            <p><strong>Hands-on Activity:</strong> Optimize models and prepare for deployment</p>
-                        </div>
-
-                        <div class="project-section">
-                            <h4 class="project-title">Week 3 Project: Predictive Model Build</h4>
-                            <p>Create production-ready machine learning model.</p>
-                            <ul class="deliverables">
-                                <li>Train and optimize multiple algorithms</li>
-                                <li>Compare model performance</li>
-                                <li>Create model evaluation report</li>
-                                <li>Prepare model for deployment</li>
-                            </ul>
-                        </div>
+                <a href="./weeks/week6/" class="week-card">
+                    <div class="week-number">Week 6</div>
+                    <h3 class="week-title">AI Deployment & Capstone Project</h3>
+                    <p class="week-description">
+                        Deploy AI models to production environments, understand MLOps, 
+                        and complete your comprehensive capstone project.
+                    </p>
+                    <div class="week-stats">
+                        <span class="sessions-count">2 Sessions</span>
+                        <span class="duration">180 min total</span>
                     </div>
-                </div>
-
-                <!-- Week 4 -->
-                <div class="week-card">
-                    <div class="week-header">
-                        <h3 class="week-title">
-                            <span class="week-number">Week 4:</span> Deep Learning & Neural Networks
-                        </h3>
-                        <button class="toggle-btn">▼</button>
-                    </div>
-                    <div class="week-content">
-                        <div class="objectives">
-                            <h4>Learning Objectives</h4>
-                            <ul>
-                                <li>Understand neural network fundamentals</li>
-                                <li>Build deep learning models with TensorFlow/Keras</li>
-                                <li>Work with different neural network architectures</li>
-                                <li>Apply deep learning to image and text data</li>
-                            </ul>
-                        </div>
-
-                        <div class="lecture-section">
-                            <div class="lecture-title">
-                                Session 4.1: Neural Network Fundamentals
-                                <span class="lecture-duration">90 min</span>
-                            </div>
-                            <ul class="topic-list">
-                                <li>Perceptrons and multilayer networks</li>
-                                <li>Activation functions and backpropagation</li>
-                                <li>Introduction to TensorFlow and Keras</li>
-                                <li>Building your first neural network</li>
-                            </ul>
-                            <p><strong>Hands-on Activity:</strong> Implement neural network from scratch and with Keras</p>
-                        </div>
-
-                        <div class="lecture-section">
-                            <div class="lecture-title">
-                                Session 4.2: Convolutional Neural Networks
-                                <span class="lecture-duration">90 min</span>
-                            </div>
-                            <ul class="topic-list">
-                                <li>CNN architecture and convolution operations</li>
-                                <li>Image classification and computer vision</li>
-                                <li>Transfer learning with pre-trained models</li>
-                                <li>Image preprocessing and augmentation</li>
-                            </ul>
-                            <p><strong>Hands-on Activity:</strong> Build image classifier using CNNs</p>
-                        </div>
-
-                        <div class="project-section">
-                            <h4 class="project-title">Week 4 Project: Computer Vision Application</h4>
-                            <p>Develop an image classification or object detection system.</p>
-                            <ul class="deliverables">
-                                <li>Design and train CNN architecture</li>
-                                <li>Implement transfer learning approach</li>
-                                <li>Evaluate model on test dataset</li>
-                                <li>Create demo application with user interface</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Week 5 -->
-                <div class="week-card">
-                    <div class="week-header">
-                        <h3 class="week-title">
-                            <span class="week-number">Week 5:</span> Natural Language Processing
-                        </h3>
-                        <button class="toggle-btn">▼</button>
-                    </div>
-                    <div class="week-content">
-                        <div class="objectives">
-                            <h4>Learning Objectives</h4>
-                            <ul>
-                                <li>Process and analyze text data</li>
-                                <li>Build NLP models for classification and generation</li>
-                                <li>Work with large language models and APIs</li>
-                                <li>Implement sentiment analysis and text summarization</li>
-                            </ul>
-                        </div>
-
-                        <div class="lecture-section">
-                            <div class="lecture-title">
-                                Session 5.1: Text Processing & Traditional NLP
-                                <span class="lecture-duration">90 min</span>
-                            </div>
-                            <ul class="topic-list">
-                                <li>Text preprocessing and tokenization</li>
-                                <li>TF-IDF and word embeddings</li>
-                                <li>Sentiment analysis and text classification</li>
-                                <li>Named entity recognition</li>
-                            </ul>
-                            <p><strong>Hands-on Activity:</strong> Build sentiment analysis model for product reviews</p>
-                        </div>
-
-                        <div class="lecture-section">
-                            <div class="lecture-title">
-                                Session 5.2: Large Language Models & APIs
-                                <span class="lecture-duration">90 min</span>
-                            </div>
-                            <ul class="topic-list">
-                                <li>Understanding transformer architecture</li>
-                                <li>Working with OpenAI, Anthropic, and other APIs</li>
-                                <li>Prompt engineering best practices</li>
-                                <li>Text generation and completion</li>
-                            </ul>
-                            <p><strong>Hands-on Activity:</strong> Create AI-powered chatbot using LLM APIs</p>
-                        </div>
-
-                        <div class="project-section">
-                            <h4 class="project-title">Week 5 Project: NLP Application</h4>
-                            <p>Build intelligent text processing application.</p>
-                            <ul class="deliverables">
-                                <li>Implement text classification system</li>
-                                <li>Integrate large language model API</li>
-                                <li>Create text summarization feature</li>
-                                <li>Build interactive web interface</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Week 6 -->
-                <div class="week-card">
-                    <div class="week-header">
-                        <h3 class="week-title">
-                            <span class="week-number">Week 6:</span> AI Deployment & Capstone Project
-                        </h3>
-                        <button class="toggle-btn">▼</button>
-                    </div>
-                    <div class="week-content">
-                        <div class="objectives">
-                            <h4>Learning Objectives</h4>
-                            <ul>
-                                <li>Deploy AI models to production environments</li>
-                                <li>Build end-to-end AI applications</li>
-                                <li>Understand MLOps and model monitoring</li>
-                                <li>Complete comprehensive capstone project</li>
-                            </ul>
-                        </div>
-
-                        <div class="lecture-section">
-                            <div class="lecture-title">
-                                Session 6.1: Model Deployment & MLOps
-                                <span class="lecture-duration">90 min</span>
-                            </div>
-                            <ul class="topic-list">
-                                <li>Deployment strategies and platforms</li>
-                                <li>API development with Flask/FastAPI</li>
-                                <li>Containerization with Docker</li>
-                                <li>Model monitoring and maintenance</li>
-                            </ul>
-                            <p><strong>Hands-on Activity:</strong> Deploy model as REST API service</p>
-                        </div>
-
-                        <div class="lecture-section">
-                            <div class="lecture-title">
-                                Session 6.2: Capstone Project Workshop
-                                <span class="lecture-duration">90 min</span>
-                            </div>
-                            <ul class="topic-list">
-                                <li>Project planning and architecture design</li>
-                                <li>Integration of multiple AI components</li>
-                                <li>User interface and experience design</li>
-                                <li>Project presentation and documentation</li>
-                            </ul>
-                            <p><strong>Hands-on Activity:</strong> Work on capstone project with instructor support</p>
-                        </div>
-
-                        <div class="project-section">
-                            <h4 class="project-title">Week 6 Capstone: Complete AI Application</h4>
-                            <p>Design and build comprehensive AI system combining multiple techniques.</p>
-                            <ul class="deliverables">
-                                <li>Plan and design end-to-end AI application</li>
-                                <li>Implement multiple AI components (ML, NLP, Computer Vision)</li>
-                                <li>Deploy application with user interface</li>
-                                <li>Present project to class with live demonstration</li>
-                                <li>Document project architecture and learnings</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -1123,120 +477,6 @@ BROWSER COMPATIBILITY:
         </div>
     </footer>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Week card accordion functionality
-        document.querySelectorAll('.week-header').forEach(header => {
-            header.addEventListener('click', function() {
-                const weekCard = this.parentElement;
-                const isActive = weekCard.classList.contains('active');
-                
-                // Close all other cards
-                document.querySelectorAll('.week-card').forEach(card => {
-                    card.classList.remove('active');
-                });
-                
-                // Toggle current card
-                if (!isActive) {
-                    weekCard.classList.add('active');
-                }
-            });
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animations
-        document.querySelectorAll('.overview-card, .week-card, .feature-card').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Navigation bar background on scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(10, 10, 15, 0.98)';
-            } else {
-                navbar.style.background = 'rgba(10, 10, 15, 0.95)';
-            }
-        });
-
-        // Add staggered animation to feature cards
-        const featureCards = document.querySelectorAll('.feature-card');
-        featureCards.forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.1}s`;
-        });
-
-        // Add staggered animation to overview cards
-        const overviewCards = document.querySelectorAll('.overview-card');
-        overviewCards.forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.2}s`;
-        });
-
-        // Back to top functionality (optional)
-        let backToTopButton = document.createElement('button');
-        backToTopButton.innerHTML = '↑';
-        backToTopButton.style.cssText = `
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            border: none;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            box-shadow: var(--shadow-glow);
-        `;
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        document.body.appendChild(backToTopButton);
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                backToTopButton.style.opacity = '1';
-                backToTopButton.style.visibility = 'visible';
-            } else {
-                backToTopButton.style.opacity = '0';
-                backToTopButton.style.visibility = 'hidden';
-            }
-        });
-    </script>
+    <script src="./assets/js/navigation.js"></script>
 </body>
 </html>

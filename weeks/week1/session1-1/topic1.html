@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is Artificial Intelligence? - Week 1, Session 1.1 - AI Engineering Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/shared.css">
+    
+    <style>
+        .content-page {
+            padding-top: 6rem;
+        }
+
+        .topic-hero {
+            background: var(--surface);
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .topic-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .session-badge {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .duration-badge {
+            background: var(--surface-light);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .topic-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .topic-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 800px;
+        }
+
+        .lecture-section {
+            margin: 3rem 0;
+            background: var(--background);
+            border-radius: 16px;
+            padding: 2rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .lecture-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .lecture-title {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .lecture-timing {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .instructor-script {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .instructor-script::before {
+            content: '💬 Instructor Script';
+            position: absolute;
+            top: -12px;
+            left: 1rem;
+            background: var(--background);
+            padding: 0 0.5rem;
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .content-box {
+            background: var(--surface-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .content-box h4 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .content-box code {
+            display: block;
+            background: var(--background);
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 0.5rem 0;
+            font-family: 'Space Mono', monospace;
+            line-height: 1.4;
+            white-space: pre-line;
+        }
+
+        .interactive-element {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(0, 212, 255, 0.1));
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .interactive-element::before {
+            content: '🎯 Interactive Element';
+            display: block;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .visual-aid {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .visual-aid::before {
+            content: '📊 Visual Aid';
+            display: block;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .timeline-visual {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: var(--background);
+            border-radius: 8px;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .timeline-item {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .timeline-year {
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .timeline-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .timeline-current {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .timeline-current::after {
+            content: '⭐';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .qa-section {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .qa-title {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .qa-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .qa-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .qa-question {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .qa-answer {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .instructor-notes {
+            background: rgba(124, 58, 237, 0.1);
+            border-left: 3px solid var(--secondary-color);
+            border-radius: 0 8px 8px 0;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .instructor-notes::before {
+            content: '📝 Instructor Notes';
+            display: block;
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .navigation-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button.back {
+            background: var(--surface);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-button.next {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .progress-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--gradient-primary);
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+
+        @media (max-width: 768px) {
+            .topic-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .timeline-visual {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navigation-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="content-page">
+    <!-- Progress Indicator -->
+    <div class="progress-indicator" id="reading-progress"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <a href="../../../" class="logo">AI Engineering</a>
+            <ul class="nav-links">
+                <li><a href="../../../#overview">Overview</a></li>
+                <li><a href="../../../#curriculum">Curriculum</a></li>
+                <li><a href="../../../#features">Features</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="../../../">Home</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="../">Week 1</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="./">Session 1.1</a>
+            <span class="breadcrumb-separator">→</span>
+            <span class="breadcrumb-current">What is AI?</span>
+        </div>
+    </div>
+
+    <!-- Topic Hero -->
+    <section class="topic-hero">
+        <div class="container">
+            <div class="topic-meta">
+                <span class="session-badge">Week 1, Session 1.1, Topic 1</span>
+                <span class="duration-badge">20 minutes</span>
+            </div>
+            <h1 class="topic-title section-title">What is Artificial Intelligence?</h1>
+            <p class="topic-description">
+                Welcome to your first deep dive into artificial intelligence! In this session, we'll demystify AI, 
+                explore its different types, and understand how it's already transforming our world.
+            </p>
+        </div>
+    </section>
+
+    <!-- Learning Objectives -->
+    <section class="content-section">
+        <div class="container">
+            <h2>Learning Objectives</h2>
+            <p>By the end of this topic, students will be able to:</p>
+            <ul class="styled-list">
+                <li>Define artificial intelligence in simple terms</li>
+                <li>Distinguish between different types of AI</li>
+                <li>Recognize AI applications in everyday life</li>
+                <li>Understand the current state and future potential of AI</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Opening -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Opening</h3>
+                    <div class="lecture-timing">(2 minutes)</div>
+                </div>
+
+                <div class="instructor-script">
+                    <p><strong>Instructor Introduction:</strong></p>
+                    <p>"Welcome everyone to our first session! I'm excited to embark on this 6-week journey with you into the fascinating world of AI. Whether you're here because you're curious about AI, want to change careers, or just want to understand the technology shaping our world - you're in the right place.</p>
+                    
+                    <p>Today, we're starting with the fundamental question: What exactly is AI? You've probably heard the term everywhere - in news, movies, social media. But what does it really mean? Let's demystify this together."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 1: Defining AI -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 1: Defining Artificial Intelligence</h3>
+                    <div class="lecture-timing">(5 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>Slide 1: What is AI?</h4>
+                    <code>Artificial Intelligence (AI) is the simulation of human intelligence 
+processes by machines, especially computer systems.
+
+Key abilities:
+• Learning from experience
+• Understanding language
+• Recognizing patterns
+• Solving problems
+• Making decisions</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"At its core, AI is about creating machines that can do things that typically require human intelligence. Think about what makes you intelligent - you can learn from mistakes, understand what people say to you, recognize your friend's face in a crowd, solve puzzles, and make decisions. AI aims to give these same capabilities to computers.</p>
+
+                    <p>But here's the key insight: AI doesn't necessarily work the same way our brains do. Just like airplanes fly but don't flap wings like birds, AI systems achieve intelligence through different mechanisms than biological brains.</p>
+
+                    <p>Let me give you a simple analogy: Imagine teaching a child to identify cats. You'd show them many cats, point out features - whiskers, pointy ears, tail - and eventually they learn. AI works similarly! We show computers thousands of cat images, and they learn to identify patterns that make something a 'cat.'"</p>
+                </div>
+
+                <div class="interactive-element">
+                    <p><strong>Quick thought experiment:</strong> Think of something intelligent you did today. Maybe you recognized a song, decided what to eat, or solved a work problem. Could a computer do that? Keep that in mind as we continue.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 2: Types of AI -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 2: The Three Levels of AI</h3>
+                    <div class="lecture-timing">(6 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>Slide 2: Types of AI</h4>
+                    <code>Three Levels of AI:
+
+1. Narrow AI (Weak AI) - Current Reality
+   • Designed for specific tasks
+   • Cannot transfer knowledge between tasks
+   • Examples: Siri, Chess AI, Netflix recommendations
+
+2. General AI (Strong AI) - Future Goal
+   • Human-like intelligence across domains
+   • Can learn and transfer knowledge
+   • Doesn't exist yet
+
+3. Super AI - Science Fiction
+   • Surpasses human intelligence
+   • Theoretical concept
+   • Subject of much debate</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Let's break down the different types of AI, because not all AI is created equal.</p>
+
+                    <p><strong>Narrow AI - This is what we have today:</strong><br>
+                    Narrow AI is like a specialist doctor. A cardiologist is amazing at heart problems but doesn't do brain surgery. Similarly, the AI in your smartphone can recognize your face brilliantly, but it can't drive your car or diagnose diseases. Each AI system excels at ONE specific task.</p>
+
+                    <p>Examples you interact with daily:</p>
+                    <ul class="styled-list">
+                        <li><strong>Spotify's recommendation system</strong> - Amazing at suggesting music, terrible at recognizing images</li>
+                        <li><strong>Google Translate</strong> - Excellent at translation, can't play chess</li>
+                        <li><strong>Tesla Autopilot</strong> - Great at driving, but can't write emails for you</li>
+                    </ul>
+
+                    <p>Every AI system you've ever used is Narrow AI. And that's what we'll be building in this course!</p>
+
+                    <p><strong>General AI - The Holy Grail:</strong><br>
+                    This is what movies show us - AI that can do anything a human can. An AI that could ace a math test, then paint a masterpiece, then diagnose a patient, then write a novel. We're not there yet. Not even close. This is decades away, if not longer.</p>
+
+                    <p>Think of it like this: Right now, we can build amazing specialist AI 'employees,' but we can't build a generalist 'human' AI yet.</p>
+
+                    <p><strong>Super AI - Science Fiction Territory:</strong><br>
+                    This is AI that's smarter than humans in every way. This is what people worry about in sci-fi movies. It's purely theoretical and we're SO far from this that most AI researchers don't even think about it in their day-to-day work."</p>
+                </div>
+
+                <div class="visual-aid">
+                    <h4>AI Timeline</h4>
+                    <div class="timeline-visual">
+                        <div class="timeline-item timeline-current">
+                            <div class="timeline-year">2024</div>
+                            <div class="timeline-label">Narrow AI<br>(we are here)</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2040s-2060s?</div>
+                            <div class="timeline-label">General AI<br>(maybe)</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">????</div>
+                            <div class="timeline-label">Super AI<br>(theoretical)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-element">
+                    <p><strong>Show of hands:</strong> Who thought AI was already at the 'general intelligence' level? It's okay if you did - media often makes it seem that way!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 3: Real-World Applications -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 3: Real-World AI Applications</h3>
+                    <div class="lecture-timing">(5 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>Slide 3: AI in Action - Industries Transformed</h4>
+                    <code>AI Applications Across Industries:
+
+Healthcare:
+• Disease diagnosis from medical images
+• Drug discovery and development
+• Personalized treatment plans
+
+Finance:
+• Fraud detection
+• Algorithmic trading
+• Credit scoring
+
+Transportation:
+• Self-driving vehicles
+• Route optimization
+• Traffic prediction
+
+Entertainment:
+• Content recommendations
+• Video game AI
+• Special effects generation
+
+Everyday Life:
+• Virtual assistants (Siri, Alexa)
+• Email spam filters
+• Photo organization
+• Social media feeds</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Let's ground this in reality. Where is AI actually being used today? Everywhere! Let me walk you through some industries:</p>
+
+                    <p><strong>Healthcare - Saving Lives:</strong><br>
+                    AI can now detect certain types of cancer from medical scans as accurately as experienced radiologists - sometimes even better! Companies like Google Health have developed AI that can spot diabetic retinopathy (eye disease) from retinal scans. This is huge for developing countries where specialists are scarce.</p>
+
+                    <p><strong>Finance - Protecting Your Money:</strong><br>
+                    Every time you swipe your credit card, AI is working in the background. It's analyzing: 'Is this transaction normal for this person?' If you suddenly make a purchase in another country, AI flags it. Banks block billions in fraud every year thanks to AI.</p>
+
+                    <p><strong>Your Daily Life - The Invisible AI:</strong><br>
+                    Let's get personal. How many of you:</p>
+                    <ul class="styled-list">
+                        <li>Have used Face ID to unlock your phone? → AI</li>
+                        <li>Asked Siri or Alexa a question? → AI</li>
+                        <li>Watched Netflix recommendations? → AI</li>
+                        <li>Used Google Maps for directions? → AI</li>
+                        <li>Seen your photos automatically organized by person? → AI</li>
+                    </ul>
+                    
+                    <p>You're already living with AI every single day!"</p>
+                </div>
+
+                <div class="highlight-box info">
+                    <h4>Real Example Deep Dive</h4>
+                    <p>"Let me share a powerful story: In 2019, an AI system called GPT-3 was able to write articles so convincing that people couldn't tell they were written by a machine. By 2023, systems like ChatGPT and Claude (yes, developed by my team at Anthropic!) can have natural conversations, write code, analyze data, and assist with creative work.</p>
+                    
+                    <p>But remember - these are still Narrow AI. ChatGPT can't drive a car. Tesla's self-driving AI can't write essays. Each is specialized."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 4: Current State and Future -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 4: Current State and Future of AI</h3>
+                    <div class="lecture-timing">(2 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>Slide 4: The AI Landscape Today</h4>
+                    <code>Where We Are (2024-2025):
+✅ Image recognition: Near-human or better
+✅ Language understanding: Remarkably good
+✅ Game playing: Superhuman (chess, Go, poker)
+✅ Pattern recognition: Excellent
+⚠️ Common sense reasoning: Still developing
+⚠️ Physical dexterity: Challenging
+⚠️ Understanding context: Improving
+❌ General intelligence: Not achieved
+
+What's Next:
+→ More capable language models
+→ Better multimodal AI (text + images + audio)
+→ More reliable and trustworthy AI
+→ AI-assisted scientific discovery
+→ Personalized AI assistants</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"So where are we right now in 2024-2025?</p>
+
+                    <p>AI is incredibly good at certain things - often better than humans:</p>
+                    <ul class="styled-list">
+                        <li>Recognizing objects in images? AI wins.</li>
+                        <li>Playing chess or Go? AI crushes human grandmasters.</li>
+                        <li>Translating languages? AI is remarkably good.</li>
+                    </ul>
+
+                    <p>But AI still struggles with things a five-year-old finds easy:</p>
+                    <ul class="styled-list">
+                        <li>Understanding that ice cream melts when it's hot (common sense)</li>
+                        <li>Folding laundry (physical dexterity)</li>
+                        <li>Knowing when a joke is appropriate (social context)</li>
+                    </ul>
+
+                    <p>The next 5-10 years? We'll see:</p>
+                    <ul class="styled-list">
+                        <li>AI becoming truly conversational partners</li>
+                        <li>AI helping scientists make breakthroughs faster</li>
+                        <li>AI assistants that understand YOUR specific needs and context</li>
+                        <li>More trustworthy and explainable AI</li>
+                    </ul>
+
+                    <p>But we're still far from General AI. And that's okay! Narrow AI is already transforming the world."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Closing & Transition</h3>
+                    <div class="lecture-timing">(1 minute)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>Slide 5: Key Takeaways</h4>
+                    <code>Remember:
+1. AI = machines performing tasks requiring intelligence
+2. Current AI is "Narrow" - specialized for specific tasks
+3. AI is already everywhere in your daily life
+4. We're building better Narrow AI, not magic General AI
+5. This is the AI you'll learn to build!</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Before we move on, let's recap: AI isn't magic, it's not sentient, and it's not going to take over the world tomorrow. It's a powerful set of tools that can learn patterns from data and make predictions or decisions based on those patterns.</p>
+
+                    <p>The exciting part? You're going to learn how to build these systems! Starting simple, getting more sophisticated each week.</p>
+
+                    <p>Questions before we move to Machine Learning fundamentals? [Pause for questions]</p>
+
+                    <p>Great! Now that we understand what AI is at a high level, let's dig into HOW AI actually learns - that's where Machine Learning comes in..."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Q&A Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="qa-section">
+                <h3 class="qa-title">Common Student Questions & Answers</h3>
+
+                <div class="qa-item">
+                    <div class="qa-question">Q: "Is AI going to take my job?"</div>
+                    <div class="qa-answer">A: "AI will change jobs, not necessarily eliminate them. It's better to think of AI as a tool that augments human capabilities. The people who thrive will be those who learn to work WITH AI, not compete against it. That's exactly what this course prepares you for!"</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">Q: "Do I need to be a math genius to understand AI?"</div>
+                    <div class="qa-answer">A: "Not at all! While AI has math underneath, we'll build intuition first. You can understand HOW a car works without being a mechanical engineer. Same with AI - we'll give you the practical knowledge to build and use AI effectively."</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">Q: "Isn't AI just hype?"</div>
+                    <div class="qa-answer">A: "Some AI claims are definitely overhyped, but the core technology is real and transformative. We'll teach you to distinguish between realistic AI capabilities and marketing hype."</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">Q: "Can AI be creative?"</div>
+                    <div class="qa-answer">A: "AI can generate novel combinations and outputs that look creative - like AI-generated art or music. But whether it's 'truly' creative in the human sense is still debated. What matters is: it's a powerful tool for creative work!"</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Notes -->
+    <section class="content-section">
+        <div class="container">
+            <div class="instructor-notes">
+                <h4>Instructor Notes</h4>
+                
+                <p><strong>Pacing:</strong></p>
+                <ul class="styled-list">
+                    <li>First 2 minutes: Keep energy high, set the tone</li>
+                    <li>Middle section: Balance depth with accessibility</li>
+                    <li>Use examples students can relate to</li>
+                    <li>Check for understanding with questions</li>
+                </ul>
+
+                <p><strong>Engagement Tips:</strong></p>
+                <ul class="styled-list">
+                    <li>Show real examples on screen (pull up ChatGPT, show Google Photos face recognition, etc.)</li>
+                    <li>Ask for audience participation</li>
+                    <li>Use humor when appropriate</li>
+                    <li>Connect to students' own experiences</li>
+                </ul>
+
+                <p><strong>Common Pitfalls to Avoid:</strong></p>
+                <ul class="styled-list">
+                    <li>Don't get too technical too fast</li>
+                    <li>Avoid philosophical debates about consciousness (save for later)</li>
+                    <li>Don't promise AI will do everything</li>
+                    <li>Don't scare students with "AI apocalypse" talk</li>
+                </ul>
+
+                <p><strong>Transition to Next Topic:</strong><br>
+                "Now that we understand WHAT AI is, let's explore HOW it learns - that's Machine Learning, our next topic!"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Resources -->
+    <section class="content-section">
+        <div class="container">
+            <div class="highlight-box">
+                <h4>Additional Resources for Students</h4>
+                
+                <p><strong>Recommended Reading (Optional):</strong></p>
+                <ul class="styled-list">
+                    <li>Article: "What is AI? A beginner's guide" (link to be provided)</li>
+                    <li>Video: "AI in 5 minutes" by Crash Course</li>
+                    <li>Interactive: "Seeing AI in Action" - demo collection</li>
+                </ul>
+
+                <p><strong>For the Curious:</strong></p>
+                <ul class="styled-list">
+                    <li>Brief history of AI (1950s to now)</li>
+                    <li>Turing Test explanation</li>
+                    <li>Famous AI moments (Deep Blue, AlphaGo, ChatGPT)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assessment Check -->
+    <section class="content-section">
+        <div class="container">
+            <div class="highlight-box info">
+                <h4>Quick Knowledge Check</h4>
+                <p>At the end of this topic, students should be able to:</p>
+                <ul class="checklist">
+                    <li>Explain AI to a friend in simple terms</li>
+                    <li>Give 3 examples of AI they use</li>
+                    <li>Distinguish between Narrow and General AI</li>
+                    <li>Feel excited (not scared) about learning AI</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="content-section">
+        <div class="container">
+            <div class="navigation-section">
+                <a href="../" class="nav-button back">
+                    ← Back to Week 1 Overview
+                </a>
+                <div style="text-align: center; color: var(--text-muted);">
+                    <strong>Next:</strong> Machine Learning Fundamentals (30 minutes)
+                </div>
+                <div class="nav-button next" style="opacity: 0.5; pointer-events: none;">
+                    Next Topic → (Coming Soon)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>
+                    <strong>Week 1, Session 1.1: What is Artificial Intelligence?</strong><br>
+                    Part of the AI Engineering Course - 6-Week Intensive Curriculum
+                </p>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+                    © 2024 AI Engineering Course. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../../assets/js/navigation.js"></script>
+    <script>
+        // Reading progress tracking
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('reading-progress').style.width = Math.min(scrolled, 100) + '%';
+        });
+
+        // Mark topic as completed when user reaches the end
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY + window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            
+            if (scrollPosition >= documentHeight * 0.9) {
+                // Mark as completed in local storage
+                if (window.CourseNavigation && window.CourseNavigation.courseProgress) {
+                    window.CourseNavigation.courseProgress().markTopicComplete(1, 1, 1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

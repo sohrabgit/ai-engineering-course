@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1: AI Fundamentals & Machine Learning Basics - AI Engineering Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/shared.css">
+    
+    <style>
+        .week-hero {
+            padding: 6rem 0 3rem;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .week-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .week-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .week-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .week-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .week-meta {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
+        }
+
+        .meta-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .sessions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .session-card {
+            background: var(--background);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .session-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-card);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .session-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .session-title {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .session-duration {
+            display: inline-block;
+            background: var(--surface);
+            color: var(--accent-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .session-topics {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .session-topics li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .session-topics li::before {
+            content: '▸';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .session-activity {
+            background: var(--surface);
+            border-radius: 8px;
+            padding: 1rem;
+            border-left: 3px solid var(--accent-color);
+            margin-top: 1rem;
+        }
+
+        .activity-label {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .project-section {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 3rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .deliverable-item {
+            background: var(--background);
+            border-radius: 8px;
+            padding: 1rem;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .navigation-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button.back {
+            background: var(--surface);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-button.next {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .week-meta {
+                gap: 1.5rem;
+            }
+            
+            .sessions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .deliverables-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .navigation-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <a href="../../" class="logo">AI Engineering</a>
+            <ul class="nav-links">
+                <li><a href="../../#overview">Overview</a></li>
+                <li><a href="../../#curriculum">Curriculum</a></li>
+                <li><a href="../../#features">Features</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="../../">Home</a>
+            <span class="breadcrumb-separator">→</span>
+            <span class="breadcrumb-current">Week 1</span>
+        </div>
+    </div>
+
+    <!-- Week Hero -->
+    <section class="week-hero">
+        <div class="container">
+            <div class="week-header">
+                <div class="week-number">Week 1</div>
+                <h1 class="week-title section-title">AI Fundamentals & Machine Learning Basics</h1>
+                <p class="week-description">
+                    Begin your AI journey with a comprehensive introduction to artificial intelligence. 
+                    Understand what AI really is, explore different types of AI systems, and dive into 
+                    the fundamentals of machine learning that power modern AI applications.
+                </p>
+                <div class="week-meta">
+                    <div class="meta-item">
+                        <span class="meta-value">2</span>
+                        <span class="meta-label">Sessions</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-value">110</span>
+                        <span class="meta-label">Total Minutes</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-value">4-6</span>
+                        <span class="meta-label">Hours This Week</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Objectives -->
+    <section class="content-section">
+        <div class="container">
+            <h2>Learning Objectives</h2>
+            <p>By the end of this week, you will be able to:</p>
+            <ul class="styled-list">
+                <li>Define artificial intelligence in simple, practical terms</li>
+                <li>Distinguish between different types of AI (Narrow, General, Super AI)</li>
+                <li>Recognize AI applications in everyday life and various industries</li>
+                <li>Understand the current state and future potential of AI technology</li>
+                <li>Explain fundamental machine learning concepts and terminology</li>
+                <li>Set up your Python development environment for AI work</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Sessions -->
+    <section class="content-section">
+        <div class="container">
+            <h2>Week 1 Sessions</h2>
+            <div class="sessions-grid">
+                <!-- Session 1.1 -->
+                <a href="./session1-1/topic1.html" class="session-card">
+                    <div class="session-number">Session 1.1</div>
+                    <h3 class="session-title">What is Artificial Intelligence?</h3>
+                    <span class="session-duration">20 minutes</span>
+                    <ul class="session-topics">
+                        <li>Defining AI and its core components</li>
+                        <li>Three levels of AI: Narrow, General, and Super AI</li>
+                        <li>Real-world AI applications across industries</li>
+                        <li>Current capabilities and limitations of AI</li>
+                    </ul>
+                    <div class="session-activity">
+                        <div class="activity-label">Hands-on Activity</div>
+                        <div class="activity-description">
+                            AI recognition exercise: Identify AI systems in your daily life and categorize them by type.
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Session 1.2 -->
+                <div class="session-card" style="opacity: 0.7; pointer-events: none;">
+                    <div class="session-number">Session 1.2</div>
+                    <h3 class="session-title">Machine Learning Fundamentals</h3>
+                    <span class="session-duration">90 minutes</span>
+                    <ul class="session-topics">
+                        <li>Introduction to Machine Learning concepts</li>
+                        <li>Supervised vs Unsupervised vs Reinforcement Learning</li>
+                        <li>Data preprocessing and feature engineering basics</li>
+                        <li>Model training and evaluation fundamentals</li>
+                    </ul>
+                    <div class="session-activity">
+                        <div class="activity-label">Hands-on Activity</div>
+                        <div class="activity-description">
+                            Build your first machine learning model using Python and scikit-learn.
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">
+                        Coming Soon
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Week Project -->
+    <section class="content-section">
+        <div class="container">
+            <div class="project-section">
+                <div class="project-header">
+                    <h2 class="project-title">Week 1 Project: AI Landscape Analysis</h2>
+                    <p>Research and present on AI applications in your industry of interest. This project will help you connect theoretical knowledge with real-world applications.</p>
+                </div>
+
+                <h4>Project Deliverables</h4>
+                <div class="deliverables-grid">
+                    <div class="deliverable-item">
+                        <h5>Industry Research</h5>
+                        <p>Identify and analyze 3 AI use cases in your chosen industry</p>
+                    </div>
+                    <div class="deliverable-item">
+                        <h5>Deep Dive Analysis</h5>
+                        <p>Select one use case for detailed analysis including benefits and challenges</p>
+                    </div>
+                    <div class="deliverable-item">
+                        <h5>Presentation</h5>
+                        <p>Create a 5-minute presentation summarizing your findings</p>
+                    </div>
+                    <div class="deliverable-item">
+                        <h5>Environment Setup</h5>
+                        <p>Set up Python development environment with required libraries</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box info" style="margin-top: 2rem;">
+                    <h4>Why This Project Matters</h4>
+                    <p>Understanding real-world AI applications helps bridge the gap between theory and practice. This research will give you context for everything you learn in the following weeks and help you identify potential career paths in AI engineering.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="content-section">
+        <div class="container">
+            <div class="navigation-section">
+                <a href="../../" class="nav-button back">
+                    ← Back to Course Overview
+                </a>
+                <a href="./session1-1/topic1.html" class="nav-button next">
+                    Start Session 1.1 →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>
+                    <strong>Week 1: AI Fundamentals & Machine Learning Basics</strong><br>
+                    Part of the AI Engineering Course - 6-Week Intensive Curriculum
+                </p>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+                    © 2024 AI Engineering Course. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/navigation.js"></script>
+</body>
+</html>
