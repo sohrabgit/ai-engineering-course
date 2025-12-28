@@ -31,6 +31,10 @@ Each week's markdown should contain:
 - Project description and deliverables
 - Resources and materials
 
+## 🚨 IMPORTANT: Development Guide Updated
+
+**For the latest development instructions, see `DEVELOPMENT.md`** - this file contains updated guidance for the refactored codebase with streamlined CSS/JS and template system.
+
 ## Quick Start & Development Commands
 
 ### Option 1: Local Development Server (Recommended)

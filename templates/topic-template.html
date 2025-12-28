@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[TOPIC_TITLE] - [WEEK_SESSION] - AI Engineering Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="[PATH_TO_SHARED_CSS]">
+    
+    <style>
+        /* Topic-specific styles only - common styles are in shared.css */
+    </style>
+</head>
+<body class="content-page">
+    <!-- Progress Indicator -->
+    <div class="progress-indicator" id="reading-progress"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <a href="[PATH_TO_HOME]" class="logo">AI Engineering</a>
+            <ul class="nav-links">
+                <li><a href="[PATH_TO_HOME]#overview">Overview</a></li>
+                <li><a href="[PATH_TO_HOME]#curriculum">Curriculum</a></li>
+                <li><a href="[PATH_TO_HOME]#features">Features</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="[PATH_TO_HOME]">Home</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="[PATH_TO_WEEK]">[WEEK_NAME]</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="[PATH_TO_SESSION]">[SESSION_NAME]</a>
+            <span class="breadcrumb-separator">→</span>
+            <span class="breadcrumb-current">[TOPIC_NAME]</span>
+        </div>
+    </div>
+
+    <!-- Topic Hero -->
+    <section class="topic-hero">
+        <div class="container">
+            <div class="topic-meta">
+                <span class="session-badge">[WEEK_SESSION_TOPIC]</span>
+                <span class="duration-badge">[DURATION]</span>
+            </div>
+            <h1 class="topic-title section-title">[TOPIC_TITLE]</h1>
+            <p class="topic-description">
+                [TOPIC_DESCRIPTION]
+            </p>
+        </div>
+    </section>
+
+    <!-- Learning Objectives -->
+    <section class="content-section">
+        <div class="container">
+            <h2>Learning Objectives</h2>
+            <p>By the end of this topic, students will be able to:</p>
+            <ul class="styled-list">
+                <li>[OBJECTIVE_1]</li>
+                <li>[OBJECTIVE_2]</li>
+                <li>[OBJECTIVE_3]</li>
+                <li>[OBJECTIVE_4]</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Main Content Sections -->
+    <!-- Copy and customize sections from existing topic files -->
+    
+    <!-- Navigation -->
+    <section class="content-section">
+        <div class="container">
+            <div class="navigation-section">
+                <a href="[PREV_TOPIC_URL]" class="nav-button back">
+                    ← [PREV_TOPIC_NAME]
+                </a>
+                <div style="text-align: center; color: var(--text-muted);">
+                    <strong>Next:</strong> [NEXT_TOPIC_NAME] ([NEXT_DURATION])
+                </div>
+                <a href="[NEXT_TOPIC_URL]" class="nav-button next">
+                    [NEXT_TOPIC_NAME] →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>
+                    <strong>[WEEK_SESSION]: [TOPIC_TITLE]</strong><br>
+                    Part of the AI Engineering Course - 6-Week Intensive Curriculum
+                </p>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+                    © 2024 AI Engineering Course. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="[PATH_TO_NAVIGATION_JS]"></script>
+    <script src="[PATH_TO_TOPIC_COMMON_JS]"></script>
+    <script>
+        // Initialize topic-specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Topic completion tracking for [WEEK_NUM], [SESSION_NUM], [TOPIC_NUM]
+            window.TopicCommon.initializeTopicCompletion([WEEK_NUM], [SESSION_NUM], [TOPIC_NUM]);
+        });
+    </script>
+</body>
+</html>

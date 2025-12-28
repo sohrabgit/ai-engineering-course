@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[SESSION_TITLE] - [WEEK_NAME] - AI Engineering Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="[PATH_TO_SHARED_CSS]">
+    
+    <style>
+        /* Session-specific styles only - common styles are in shared.css */
+    </style>
+</head>
+<body class="content-page">
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <a href="[PATH_TO_HOME]" class="logo">AI Engineering</a>
+            <ul class="nav-links">
+                <li><a href="[PATH_TO_HOME]#overview">Overview</a></li>
+                <li><a href="[PATH_TO_HOME]#curriculum">Curriculum</a></li>
+                <li><a href="[PATH_TO_HOME]#features">Features</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="[PATH_TO_HOME]">Home</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="[PATH_TO_WEEK]">[WEEK_NAME]</a>
+            <span class="breadcrumb-separator">→</span>
+            <span class="breadcrumb-current">[SESSION_NAME]</span>
+        </div>
+    </div>
+
+    <!-- Session Hero -->
+    <section class="session-hero">
+        <div class="container">
+            <div class="session-meta">
+                <span class="session-badge">[WEEK_SESSION]</span>
+                <span class="duration-badge">[TOTAL_DURATION]</span>
+            </div>
+            <h1 class="session-title section-title">[SESSION_TITLE]</h1>
+            <p class="session-description">
+                [SESSION_DESCRIPTION]
+            </p>
+        </div>
+    </section>
+
+    <!-- Session Overview -->
+    <section class="content-section">
+        <div class="container">
+            <h2>Session Overview</h2>
+            <p>[SESSION_OVERVIEW_DESCRIPTION]</p>
+            
+            <h3>Learning Objectives</h3>
+            <ul class="styled-list">
+                <li>[SESSION_OBJECTIVE_1]</li>
+                <li>[SESSION_OBJECTIVE_2]</li>
+                <li>[SESSION_OBJECTIVE_3]</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Topics Grid -->
+    <section class="content-section">
+        <div class="container">
+            <h2>Topics</h2>
+            <div class="topics-grid">
+                <!-- Topic Cards -->
+                <a href="[TOPIC_1_URL]" class="topic-card">
+                    <div class="topic-header">
+                        <div class="topic-number">Topic 1</div>
+                        <div class="duration-badge">[TOPIC_1_DURATION]</div>
+                    </div>
+                    <h3 class="card-title">[TOPIC_1_TITLE]</h3>
+                    <p class="card-subtitle">[TOPIC_1_DESCRIPTION]</p>
+                    <ul class="styled-list">
+                        <li>[TOPIC_1_OBJECTIVE_1]</li>
+                        <li>[TOPIC_1_OBJECTIVE_2]</li>
+                    </ul>
+                </a>
+
+                <!-- Add more topic cards as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Session Resources -->
+    <section class="content-section">
+        <div class="container">
+            <div class="highlight-box">
+                <h4>Session Resources</h4>
+                <ul class="styled-list">
+                    <li>[RESOURCE_1]</li>
+                    <li>[RESOURCE_2]</li>
+                    <li>[RESOURCE_3]</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="content-section">
+        <div class="container">
+            <div class="navigation-section">
+                <a href="[PATH_TO_WEEK]" class="nav-button back">
+                    ← Back to [WEEK_NAME]
+                </a>
+                <div style="text-align: center; color: var(--text-muted);">
+                    <strong>[TOPIC_COUNT] Topics</strong> • <strong>[TOTAL_DURATION]</strong>
+                </div>
+                <a href="[FIRST_TOPIC_URL]" class="nav-button next">
+                    Start Session →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>
+                    <strong>[WEEK_SESSION]: [SESSION_TITLE]</strong><br>
+                    Part of the AI Engineering Course - 6-Week Intensive Curriculum
+                </p>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+                    © 2024 AI Engineering Course. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="[PATH_TO_NAVIGATION_JS]"></script>
+</body>
+</html>
