@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning Introduction - Week 1, Session 1.1 - AI Engineering Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/shared.css">
+    
+    <style>
+        /* Topic-specific styles only - common styles are in shared.css */
+    </style>
+</head>
+<body class="content-page">
+    <!-- Progress Indicator -->
+    <div class="progress-indicator" id="reading-progress"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <a href="../../../" class="logo">AI Engineering</a>
+            <ul class="nav-links">
+                <li><a href="../../../#overview">Overview</a></li>
+                <li><a href="../../../#curriculum">Curriculum</a></li>
+                <li><a href="../../../#features">Features</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="../../../">Home</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="../">Week 1</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="./">Session 1.1</a>
+            <span class="breadcrumb-separator">→</span>
+            <span class="breadcrumb-current">Deep Learning Introduction</span>
+        </div>
+    </div>
+
+    <!-- Topic Hero -->
+    <section class="topic-hero">
+        <div class="container">
+            <div class="topic-meta">
+                <span class="session-badge">Week 1, Session 1.1, Topic 3</span>
+                <span class="duration-badge">20 minutes</span>
+            </div>
+            <h1 class="topic-title section-title">Deep Learning Introduction</h1>
+            <p class="topic-description">
+                Discover the neural networks that power modern AI breakthroughs. Learn what makes deep learning "deep," 
+                how neural networks work, and when to use this powerful subset of machine learning.
+            </p>
+        </div>
+    </section>
+
+    <!-- Learning Objectives -->
+    <section class="content-section">
+        <div class="container">
+            <h2>Learning Objectives</h2>
+            <p>By the end of this topic, students will be able to:</p>
+            <ul class="styled-list">
+                <li>Explain what makes deep learning "deep"</li>
+                <li>Understand the basics of neural networks and how they're inspired by the brain</li>
+                <li>Recognize when to use deep learning vs. traditional ML</li>
+                <li>Identify major deep learning success stories and applications</li>
+                <li>Understand why deep learning has become so powerful recently</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Opening & Bridge -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Opening & Bridge from Topic 2</h3>
+                    <div class="lecture-timing">(2 minutes)</div>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Alright! We've covered Machine Learning - teaching computers to learn from data. Now let's talk about the subset of ML that's causing all the excitement: <strong>Deep Learning</strong>.</p>
+                    
+                    <p>You've probably heard about:</p>
+                    <ul class="styled-list">
+                        <li>Self-driving cars that can 'see' the road</li>
+                        <li>AI that can beat world champions at complex games</li>
+                        <li>Systems that can have natural conversations (like ChatGPT)</li>
+                        <li>AI that creates art and music</li>
+                    </ul>
+                    
+                    <p>All of these use Deep Learning!"</p>
+                </div>
+
+                <div class="highlight-box info">
+                    <h4>Why Deep Learning Now?</h4>
+                    <p>Deep Learning isn't new - the core ideas date back to the 1950s! So why is it only now taking over the world?</p>
+                    <ol>
+                        <li><strong>Data:</strong> We now have massive amounts of data (internet, sensors, cameras)</li>
+                        <li><strong>Compute:</strong> GPUs make training fast enough to be practical</li>
+                        <li><strong>Algorithms:</strong> Better techniques to train deeper networks</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 1: What Makes Deep Learning "Deep"? -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 1: What Makes Deep Learning "Deep"?</h3>
+                    <div class="lecture-timing">(5 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>Deep Learning = Machine Learning using Neural Networks</h4>
+                    <code>The AI Hierarchy:
+
+Artificial Intelligence
+├── Machine Learning
+    ├── Deep Learning
+        ├── Neural Networks
+        ├── Convolutional Neural Networks (CNNs)
+        ├── Recurrent Neural Networks (RNNs)
+        └── Transformer Models</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p><strong>"Deep" refers to:</strong></p>
+                    <ul class="styled-list">
+                        <li>Multiple layers of processing</li>
+                        <li>Each layer learns increasingly complex features</li>
+                        <li>Hierarchical learning from simple to complex</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h4>Hierarchical Feature Learning</h4>
+                    <p><strong>Example: Recognizing a Cat</strong></p>
+                    <code>Layer 1 (Low-level):
+- Detects edges: / \ | —
+- Spots colors and textures
+
+Layer 2 (Mid-level):
+- Combines edges into shapes
+- Finds ear triangles, eye circles
+
+Layer 3 (High-level):
+- Assembles shapes into face
+- Recognizes "cat face" pattern
+
+Layer 4 (Very high-level):
+- Identifies specific cat features
+- Distinguishes from dogs
+
+Output:
+- "This is a CAT with 98% confidence"</code>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Key Insight</h4>
+                    <p>You don't program each layer to detect specific things! The network learns what features are useful at each layer through training.</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>Traditional ML vs. Deep Learning</h4>
+                    <code>Traditional ML (Manual Feature Engineering):
+1. Expert examines problem
+2. Expert designs features
+   - "Count whiskers"
+   - "Measure ear angle"
+   - "Check tail length"
+3. Feed features to algorithm
+4. Algorithm makes prediction
+
+Problem: Requires domain expertise, time-consuming, limited
+
+Deep Learning (Automatic Feature Learning):
+1. Feed raw data (pixels) directly
+2. Network learns relevant features automatically
+3. Network makes prediction
+
+Advantage: No manual engineering, discovers optimal features</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 2: Neural Network Basics -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 2: Neural Network Basics</h3>
+                    <div class="lecture-timing">(6 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>Inspired by Biological Neurons</h4>
+                    <code>Biological Neuron:
+- Dendrites: Receive signals
+- Cell body: Processes signals
+- Axon: Sends output
+- Fires when input exceeds threshold
+
+Artificial Neuron:
+- Inputs: Receive values
+- Weights: Determine importance
+- Activation: Decides output
+- Output: Sends to next layer</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Deep learning uses 'neural networks' - but why are they called that? Let's look at the biological inspiration.</p>
+                    
+                    <p><strong>Your Brain:</strong></p>
+                    <ul class="styled-list">
+                        <li>~86 billion neurons</li>
+                        <li>Each neuron connects to thousands of others</li>
+                        <li>Neurons fire (activate) when stimulated enough</li>
+                        <li>Learning = strengthening/weakening connections</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h4>How an Artificial Neuron Works</h4>
+                    <p><strong>Spam Detection Example:</strong></p>
+                    <code>Neuron decides: Is this email spam?
+
+Inputs (features):
+- x₁ = Number of exclamation marks: 5
+- x₂ = Contains word "FREE": 1 (yes)
+- x₃ = From known contact: 0 (no)
+
+Weights (learned during training):
+- w₁ = 0.3 (exclamation marks matter somewhat)
+- w₂ = 0.8 (word "FREE" is strong spam indicator)
+- w₃ = -0.9 (known contacts are unlikely spam)
+
+Calculation:
+Sum = (0.3 × 5) + (0.8 × 1) + (-0.9 × 0) + bias
+Sum = 1.5 + 0.8 + 0 + 0.5 = 2.8
+
+Activation Function (Sigmoid):
+- If sum > threshold → Output high (likely spam)
+- Output = 0.94 → 94% probability it's spam ✓</code>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Key Insight</h4>
+                    <p>The weights are what the neuron LEARNS during training! Initially random, they adjust to make better predictions.</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>From Neurons to Networks</h4>
+                    <code>Neural Network Architecture:
+
+Input Layer: Raw data enters
+Hidden Layers: Processing happens (this is the "deep" part)
+Output Layer: Final prediction
+
+Information Flow:
+Image of Cat (784 pixels)
+    ↓
+Layer 1: 128 neurons
+- Each neuron looks at all 784 pixels
+- Learns low-level features (edges)
+    ↓
+Layer 2: 64 neurons
+- Each looks at all 128 outputs from Layer 1
+- Learns mid-level features (shapes)
+    ↓
+Layer 3: 32 neurons
+- Learns high-level features (cat parts)
+    ↓
+Output: 10 neurons
+- One for each category (cat, dog, bird, ...)
+- Highest value = prediction</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p><strong>How Networks Learn:</strong></p>
+                    <p>Training Process:</p>
+                    <ol>
+                        <li>Show network an image: "This is a cat"</li>
+                        <li>Network makes prediction: "I think it's a dog" ✗</li>
+                        <li>Calculate error: How wrong was it?</li>
+                        <li>Backpropagate: Adjust all weights slightly</li>
+                        <li>Repeat with next image</li>
+                        <li>After thousands of images, network gets good!</li>
+                    </ol>
+                    <p>This is called "Backpropagation" - we'll implement it in Week 3!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 3: When to Use Deep Learning -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 3: When to Use Deep Learning</h3>
+                    <div class="lecture-timing">(4 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>Deep Learning vs. Traditional ML</h4>
+                    <code>Use Deep Learning When:
+✓ Large amounts of data available
+✓ Complex patterns (images, audio, text)
+✓ Automatic feature learning needed
+✓ Have computational resources (GPUs)
+
+Use Traditional ML When:
+✓ Small dataset (< 1,000 examples)
+✓ Simple patterns
+✓ Need interpretability
+✓ Limited compute
+✓ Structured/tabular data</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Deep Learning is powerful, but it's not always the right tool. Let's understand when to use what.</p>
+
+                    <p><strong>When Deep Learning Shines:</strong></p>
+
+                    <p><strong>1. Unstructured Data</strong></p>
+                    <ul class="styled-list">
+                        <li><strong>Images:</strong> Cat vs. Dog classification - Millions of pixels, complex patterns → Deep Learning: 98% accuracy ✓</li>
+                        <li><strong>Audio:</strong> Speech recognition - Complex waveforms → Deep Learning: Near-human accuracy ✓</li>
+                        <li><strong>Text:</strong> Language understanding - Context, nuances, semantics → Deep Learning: Excellent ✓</li>
+                    </ul>
+
+                    <p><strong>2. Lots of Data</strong><br>
+                    Deep networks have millions of parameters → Need millions of examples to train properly</p>
+
+                    <p><strong>When Traditional ML is Better:</strong></p>
+                    <ul class="styled-list">
+                        <li><strong>Small Datasets:</strong> Medical study with 200 patients → Not enough data for deep learning</li>
+                        <li><strong>Structured/Tabular Data:</strong> Spreadsheet data with 50 clear features → XGBoost often outperforms deep learning</li>
+                        <li><strong>Need Interpretability:</strong> Loan approval system → Need to explain WHY loan was denied</li>
+                        <li><strong>Limited Resources:</strong> No GPU, training on laptop → Traditional ML trains in minutes</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h4>Practical Decision Framework</h4>
+                    <code>Question 1: What's your data type?
+- Images/Audio/Text → Consider Deep Learning
+- Tabular/Spreadsheet → Consider Traditional ML
+
+Question 2: How much data?
+- < 10,000 examples → Traditional ML safer
+- > 100,000 examples → Deep Learning potential
+- > 1,000,000 examples → Deep Learning likely wins
+
+Question 3: Computational resources?
+- No GPU, quick training needed → Traditional ML
+- Have GPU, time to train → Deep Learning viable
+
+Question 4: Need interpretability?
+- Must explain decisions → Traditional ML
+- Just need accuracy → Deep Learning fine</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 4: Deep Learning Success Stories -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 4: Deep Learning Breakthroughs</h3>
+                    <div class="lecture-timing">(3 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>Major Milestones</h4>
+                    <code>2012: ImageNet - AlexNet beats all competitors
+2016: AlphaGo defeats world champion
+2017: Transformers revolutionize NLP
+2020: GPT-3 shows emergent abilities
+2022: Stable Diffusion & DALL-E create art
+2023: ChatGPT reaches 100M users
+2024: AI assists in scientific discovery</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Let me share some amazing deep learning breakthroughs that changed the world:</p>
+
+                    <p><strong>2012: ImageNet Competition - The Turning Point</strong></p>
+                    <ul class="styled-list">
+                        <li>Challenge: Classify images into 1,000 categories</li>
+                        <li>1.2 million training images</li>
+                        <li>State-of-the-art: ~75% accuracy</li>
+                        <li>AlexNet (Deep CNN): 85% accuracy! 10% improvement = HUGE leap</li>
+                        <li>Impact: Everyone realized deep learning works!</li>
+                    </ul>
+
+                    <p><strong>2016: AlphaGo Defeats World Champion</strong></p>
+                    <ul class="styled-list">
+                        <li>Game of Go: More complex than chess, 10^170 possible positions</li>
+                        <li>AlphaGo used deep neural networks + reinforcement learning</li>
+                        <li>Beat Lee Sedol (world champion) 4-1</li>
+                        <li>Impact: AI can master complex strategic thinking</li>
+                    </ul>
+
+                    <p><strong>2017: Transformers & the NLP Revolution</strong></p>
+                    <ul class="styled-list">
+                        <li>"Attention is All You Need" paper</li>
+                        <li>Led to: BERT (2018) → GPT-2 (2019) → GPT-3 (2020) → ChatGPT (2022)</li>
+                        <li>Impact: AI can understand and generate human-like text</li>
+                    </ul>
+
+                    <p><strong>2020s: Multimodal AI</strong></p>
+                    <ul class="styled-list">
+                        <li>DALL-E & Stable Diffusion: Text to image generation</li>
+                        <li>GPT-4 & Claude: Understand text AND images</li>
+                        <li>AlphaFold: Predicts protein structures, solved 50-year biology problem</li>
+                        <li>Impact: AI becomes creative and scientific partner</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Activities -->
+    <section class="content-section">
+        <div class="container">
+            <div class="interactive-element">
+                <h4>Interactive Activity: Deep Learning or Traditional ML?</h4>
+                <p>For each scenario, decide: Would you use Deep Learning or Traditional ML?</p>
+                
+                <div class="content-box">
+                    <p><strong>Scenario 1:</strong> Predict customer churn from purchase history (10,000 customers)</p>
+                    <p><em>Answer: Traditional ML (tabular data, moderate size)</em></p>
+                </div>
+
+                <div class="content-box">
+                    <p><strong>Scenario 2:</strong> Classify medical images for disease detection (1M images)</p>
+                    <p><em>Answer: Deep Learning (images, large dataset)</em></p>
+                </div>
+
+                <div class="content-box">
+                    <p><strong>Scenario 3:</strong> Recognize handwritten digits from photos</p>
+                    <p><em>Answer: Deep Learning (images, well-suited for CNNs)</em></p>
+                </div>
+
+                <div class="content-box">
+                    <p><strong>Scenario 4:</strong> Predict house prices from 20 features (5,000 houses)</p>
+                    <p><em>Answer: Traditional ML (tabular, smaller dataset)</em></p>
+                </div>
+
+                <div class="content-box">
+                    <p><strong>Scenario 5:</strong> Translate text from English to Spanish</p>
+                    <p><em>Answer: Deep Learning (language, complex patterns)</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing & Summary -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Closing & Summary</h3>
+                    <div class="lecture-timing">(2 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>Key Takeaways</h4>
+                    <code>Remember:
+
+1. "Deep" = Multiple layers learning hierarchical features
+
+2. Inspired by brain but works differently
+
+3. Use for:
+   - Images, audio, text (unstructured data)
+   - Large datasets
+   - Complex patterns
+
+4. Traditional ML still valuable for:
+   - Small data
+   - Tabular data
+   - Interpretability needs
+
+5. Deep Learning drives modern AI breakthroughs</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Let's wrap up Deep Learning fundamentals:</p>
+                    
+                    <p><strong>The Big Ideas:</strong></p>
+                    <ul class="styled-list">
+                        <li><strong>'Deep' Learning is about layers:</strong> Each layer learns increasingly abstract features</li>
+                        <li><strong>Neural networks are:</strong> Inspired by biology but not identical to brains</li>
+                        <li><strong>Automatic feature learning:</strong> No manual engineering needed!</li>
+                    </ul>
+
+                    <p><strong>When to use Deep Learning:</strong></p>
+                    <ul class="styled-list">
+                        <li>Got lots of data? ✓</li>
+                        <li>Unstructured data (images, text, audio)? ✓</li>
+                        <li>Complex patterns? ✓</li>
+                        <li>Have computational resources? ✓</li>
+                    </ul>
+
+                    <p><strong>The Exciting Part:</strong> In the coming weeks, you'll:
+                    - Week 3: Build neural networks from scratch!
+                    - Week 4: Create CNNs for image recognition
+                    - Week 5: Use Transformers for NLP
+                    - Week 6: Build AI agents with LLMs</p>
+
+                    <p><strong>But First...</strong> Before we can build anything, we need to set up your development environment. That's Session 1.2 - getting Python, Jupyter, and all the tools installed so you can start coding!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Q&A -->
+    <section class="content-section">
+        <div class="container">
+            <div class="qa-section">
+                <h3 class="qa-title">Common Student Questions & Answers</h3>
+
+                <div class="qa-item">
+                    <div class="qa-question">Q: "How is deep learning different from AI?"</div>
+                    <div class="qa-answer">A: "AI is the broad goal (intelligent machines). Machine Learning is a method (learning from data). Deep Learning is a specific type of ML using neural networks. Think: AI ⊃ ML ⊃ Deep Learning."</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">Q: "Do neural networks actually work like the brain?"</div>
+                    <div class="qa-answer">A: "They're inspired by the brain but work very differently. Real neurons are far more complex, and we don't fully understand how the brain learns. Neural networks are simplified mathematical models that happen to work well!"</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">Q: "Why do we need so much data for deep learning?"</div>
+                    <div class="qa-answer">A: "Deep networks have millions of parameters (weights) to learn. Each parameter needs multiple examples to train properly. With few examples, networks memorize instead of learning general patterns (overfitting)."</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">Q: "Can I run deep learning on my laptop?"</div>
+                    <div class="qa-answer">A: "Yes for small models and datasets! Modern frameworks work on CPUs. For large models and lots of data, you'll want a GPU. We'll use Google Colab in this course - free GPU access in the cloud!"</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">Q: "Is deep learning just hype?"</div>
+                    <div class="qa-answer">A: "Some claims are overhyped, but the core technology is revolutionary and here to stay. It's transformed computer vision, NLP, and many fields. However, it's not magic and has limitations we need to understand."</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="content-section">
+        <div class="container">
+            <div class="topic-navigation">
+                <a href="topic2.html" class="nav-button back">
+                    ← Previous: ML Fundamentals
+                </a>
+                <a href="./" class="nav-button session">
+                    ↑ Session Overview
+                </a>
+                <div class="nav-button next" style="opacity: 0.5; pointer-events: none;">
+                    Session 1.2 → (Coming Soon)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>
+                    <strong>Week 1, Session 1.1, Topic 3: Deep Learning Introduction</strong><br>
+                    Part of the AI Engineering Course - 6-Week Intensive Curriculum
+                </p>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+                    © 2024 AI Engineering Course. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../../assets/js/navigation.js"></script>
+    <script src="../../../assets/js/topic-common.js"></script>
+    <script>
+        // Initialize topic-specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Topic completion tracking for Week 1, Session 1, Topic 3
+            window.TopicCommon.initializeTopicCompletion(1, 1, 3);
+        });
+    </script>
+</body>
+</html>
