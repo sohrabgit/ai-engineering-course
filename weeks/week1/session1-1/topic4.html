@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environment Setup - Week 1, Session 1.1 - AI Engineering Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/shared.css">
+    
+    <style>
+        /* Topic-specific styles only - common styles are in shared.css */
+    </style>
+</head>
+<body class="content-page">
+    <!-- Progress Indicator -->
+    <div class="progress-indicator" id="reading-progress"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <a href="../../../" class="logo">AI Engineering</a>
+            <ul class="nav-links">
+                <li><a href="../../../#overview">Overview</a></li>
+                <li><a href="../../../#curriculum">Curriculum</a></li>
+                <li><a href="../../../#features">Features</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="../../../">Home</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="../">Week 1</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="./">Session 1.1</a>
+            <span class="breadcrumb-separator">→</span>
+            <span class="breadcrumb-current">Environment Setup</span>
+        </div>
+    </div>
+
+    <!-- Topic Hero -->
+    <section class="topic-hero">
+        <div class="container">
+            <div class="topic-meta">
+                <span class="session-badge">Week 1, Session 1.1, Topic 4</span>
+                <span class="duration-badge">20 minutes</span>
+            </div>
+            <h1 class="topic-title section-title">Environment Setup</h1>
+            <p class="topic-description">
+                Get your hands dirty! Set up your complete AI development environment with Python, Jupyter Notebooks, 
+                and essential libraries. By the end, you'll be ready to start building AI systems.
+            </p>
+        </div>
+    </section>
+
+    <!-- Learning Objectives -->
+    <section class="content-section">
+        <div class="container">
+            <h2>Learning Objectives</h2>
+            <p>By the end of this topic, students will be able to:</p>
+            <ul class="styled-list">
+                <li>Install Python and Anaconda on their system</li>
+                <li>Launch and use Jupyter Notebooks</li>
+                <li>Install essential AI/ML libraries (NumPy, Pandas, Matplotlib)</li>
+                <li>Use Google Colab as a cloud alternative</li>
+                <li>Verify their environment is working correctly</li>
+                <li>Know where to get help when issues arise</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Opening -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Opening</h3>
+                    <div class="lecture-timing">(2 minutes)</div>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Alright team! We've covered a lot of theory in the past hour:</p>
+                    <ul class="styled-list">
+                        <li>What AI and Machine Learning are</li>
+                        <li>The different types of ML</li>
+                        <li>How Deep Learning works and when to use it</li>
+                    </ul>
+                    
+                    <p>Now it's time to get practical! You can't learn to code AI without actually coding, right?</p>
+                </div>
+
+                <div class="highlight-box info">
+                    <h4>Today's Goal</h4>
+                    <p>By the end of this session, everyone will have a working environment where you can:</p>
+                    <ul class="styled-list">
+                        <li>Write and run Python code</li>
+                        <li>Use Jupyter Notebooks</li>
+                        <li>Import ML libraries</li>
+                        <li>Run your first AI code!</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h4>Two Paths We'll Cover</h4>
+                    <code>1. Local Setup (Anaconda) - Run on your computer
+2. Cloud Setup (Google Colab) - Run in your browser
+
+Recommendation: Have both!
+- Local for daily work
+- Colab for GPU power or when traveling</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 1: Installing Python & Anaconda -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 1: Installing Python & Anaconda</h3>
+                    <div class="lecture-timing">(8 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>Why Anaconda?</h4>
+                    <code>Python Alone:
+- Need to install packages one by one
+- Managing dependencies is painful
+- Different projects need different versions
+- Environment conflicts
+
+Anaconda:
+✓ Python + 250+ data science packages
+✓ Includes Jupyter Notebooks
+✓ Package management (conda)
+✓ Environment management
+✓ Works on Windows, Mac, Linux
+✓ One installation = Everything you need</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p><strong>Think of it like this:</strong></p>
+                    <ul class="styled-list">
+                        <li><strong>Just Python</strong> = Buying a car with no accessories</li>
+                        <li><strong>Anaconda</strong> = Buying a fully loaded car with GPS, premium sound, everything</li>
+                    </ul>
+                </div>
+
+                <!-- Windows Installation -->
+                <h4 style="color: var(--primary-color); margin: 2rem 0 1rem;">For Windows Users:</h4>
+                
+                <div class="content-box">
+                    <h4>Step-by-Step Installation</h4>
+                    <code>Step 1: Download
+→ Go to: https://www.anaconda.com/download
+→ Click "Download" for Windows
+→ Choose 64-bit installer (most computers)
+→ File is ~500MB, takes 2-5 minutes to download
+
+Step 2: Run Installer
+→ Double-click the .exe file
+→ Click "Next" through the screens
+→ IMPORTANT: Check "Add Anaconda to PATH" (makes life easier)
+→ Choose "Install for: Just Me" (recommended)
+→ Installation takes 5-10 minutes
+
+Step 3: Verify Installation
+→ Open Command Prompt (search "cmd" in Start menu)
+→ Type: conda --version
+→ Should see: conda 23.x.x (some version number)
+→ Type: python --version
+→ Should see: Python 3.11.x or similar</code>
+                </div>
+
+                <div class="highlight-box warning">
+                    <h4>Common Windows Issues</h4>
+                    <p><strong>Issue:</strong> "conda not recognized"<br>
+                    <strong>Solution:</strong> Need to add to PATH manually</p>
+                    <ol>
+                        <li>Search "Environment Variables" in Start</li>
+                        <li>Edit "Path" variable</li>
+                        <li>Add: C:\Users\[YourName]\anaconda3\Scripts</li>
+                        <li>Restart Command Prompt</li>
+                    </ol>
+                </div>
+
+                <!-- Mac Installation -->
+                <h4 style="color: var(--primary-color); margin: 2rem 0 1rem;">For Mac Users:</h4>
+
+                <div class="content-box">
+                    <h4>macOS Installation</h4>
+                    <code>Step 1: Download
+→ Go to: https://www.anaconda.com/download
+→ Click "Download" for macOS
+→ Choose the right chip:
+  - M1/M2/M3 Mac: Apple Silicon
+  - Older Mac: Intel
+→ File is ~500MB
+
+Step 2: Run Installer
+→ Double-click the .pkg file
+→ Click "Continue" through screens
+→ Install in default location
+→ Takes 5-10 minutes
+
+Step 3: Verify Installation
+→ Open Terminal (Cmd+Space, type "Terminal")
+→ Type: conda --version
+→ Should see: conda 23.x.x
+→ Type: python --version
+→ Should see: Python 3.11.x</code>
+                </div>
+
+                <!-- Linux Installation -->
+                <h4 style="color: var(--primary-color); margin: 2rem 0 1rem;">For Linux Users:</h4>
+
+                <div class="content-box">
+                    <h4>Linux Installation</h4>
+                    <code>Step 1: Download
+wget https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
+
+Step 2: Install
+bash Anaconda3-2024.02-1-Linux-x86_64.sh
+→ Follow prompts, accept license
+→ Install in default location: ~/anaconda3
+→ Yes to "conda init"
+
+Step 3: Verify
+→ Close and reopen terminal
+→ conda --version
+→ python --version</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 2: Jupyter Notebooks -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 2: Jupyter Notebooks</h3>
+                    <div class="lecture-timing">(5 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>What is Jupyter Notebook?</h4>
+                    <code>Interactive coding environment:
+- Write code in cells
+- Run cells individually
+- See output immediately
+- Mix code, text, and visualizations
+- Perfect for learning and experimentation
+
+Why Data Scientists Love It:
+✓ Immediate feedback
+✓ Document your thinking
+✓ Share work easily
+✓ Visualize results inline
+✓ Experiment without risk</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p><strong>Think of it like a lab notebook:</strong></p>
+                    <ul class="styled-list">
+                        <li><strong>Traditional coding:</strong> Write entire program → Run → See all results</li>
+                        <li><strong>Jupyter:</strong> Write small piece → Run → See result → Write next piece</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h4>Launching Jupyter Notebook</h4>
+                    <code>Method 1: Anaconda Navigator (Easy, Visual)
+Step 1: Open Anaconda Navigator
+→ Windows: Search "Anaconda Navigator" in Start
+→ Mac: Applications → Anaconda Navigator
+
+Step 2: Launch Jupyter
+→ Find "Jupyter Notebook" tile
+→ Click "Launch"
+→ Browser opens automatically
+→ You'll see your file system
+
+Method 2: Command Line (Faster)
+Step 1: Open Terminal/Command Prompt
+Step 2: Type command
+$ jupyter notebook
+Step 3: Browser opens automatically
+→ Shows: http://localhost:8888/tree
+→ You see your home directory</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Creating Your First Notebook</h4>
+                    <code>Step 1: Click "New" (top right)
+Step 2: Select "Python 3"
+Step 3: You now have a blank notebook!
+Step 4: Rename it (click "Untitled" at top)</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Your First Code</h4>
+                    <code># Cell 1: Basic Python
+print("Hello, AI World!")
+print("2 + 2 =", 2 + 2)
+
+# Press Shift+Enter to run</code>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Keyboard Shortcuts (Most Useful)</h4>
+                    <p><strong>Command Mode (press Esc):</strong></p>
+                    <ul class="styled-list">
+                        <li><strong>A:</strong> Add cell above</li>
+                        <li><strong>B:</strong> Add cell below</li>
+                        <li><strong>DD:</strong> Delete cell</li>
+                        <li><strong>M:</strong> Change to Markdown</li>
+                        <li><strong>Y:</strong> Change to Code</li>
+                    </ul>
+                    
+                    <p><strong>Edit Mode (press Enter):</strong></p>
+                    <ul class="styled-list">
+                        <li><strong>Shift+Enter:</strong> Run cell, move to next</li>
+                        <li><strong>Ctrl+Enter:</strong> Run cell, stay in cell</li>
+                        <li><strong>Alt+Enter:</strong> Run cell, insert below</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 3: Installing Essential Libraries -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 3: Installing Essential Libraries</h3>
+                    <div class="lecture-timing">(3 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>The AI/ML Python Stack</h4>
+                    <code>NumPy: Numerical computing, arrays
+Pandas: Data manipulation, DataFrames
+Matplotlib: Data visualization, plots
+Scikit-learn: Classical ML algorithms
+PyTorch: Deep Learning (Week 3+)
+
+Good News: Anaconda includes most of these!</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Good news! If you installed Anaconda, you already have most libraries we need!</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>Check What's Installed</h4>
+                    <p>In a Jupyter cell, run:</p>
+                    <code># Check NumPy
+import numpy as np
+print(f"NumPy version: {np.__version__}")
+
+# Check Pandas
+import pandas as pd
+print(f"Pandas version: {pd.__version__}")
+
+# Check Matplotlib
+import matplotlib.pyplot as plt
+print(f"Matplotlib version: {matplotlib.__version__}")
+
+# Check Scikit-learn
+import sklearn
+print(f"Scikit-learn version: {sklearn.__version__}")</code>
+                    <p>If all these work, you're set! ✓</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>If Something's Missing</h4>
+                    <code># In terminal/command prompt
+$ conda install numpy pandas matplotlib scikit-learn
+
+# Or for a specific package
+$ conda install pytorch
+
+# Alternative: using pip
+$ pip install package-name</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Quick Test</h4>
+                    <p>Let's make sure everything works:</p>
+                    <code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create simple data
+x = np.array([1, 2, 3, 4, 5])
+y = x ** 2
+
+# Create DataFrame
+df = pd.DataFrame({'x': x, 'y': y})
+print(df)
+
+# Plot
+plt.plot(x, y)
+plt.title("My First Plot!")
+plt.show()</code>
+                    <p>If you see a plot, everything is working! 🎉</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 4: Google Colab -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 4: Google Colab (Cloud Alternative)</h3>
+                    <div class="lecture-timing">(4 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>Google Colab: Jupyter in the Cloud</h4>
+                    <code>Advantages:
+✓ No installation needed
+✓ Access from anywhere
+✓ Free GPU access
+✓ Preinstalled libraries
+✓ Easy sharing
+✓ Saves to Google Drive
+
+When to Use:
+- Need GPU for deep learning
+- On a different computer
+- Installation problems
+- Quick experiments
+- Collaborating with others</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Sometimes you can't or don't want to use your local computer:</p>
+                    <ul class="styled-list">
+                        <li>Traveling with tablet</li>
+                        <li>Installation issues</li>
+                        <li>Need more power</li>
+                        <li>Want to collaborate</li>
+                    </ul>
+                    <p>That's where Google Colab shines!</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>Getting Started with Colab</h4>
+                    <code>Step 1: Open browser
+→ Go to: https://colab.research.google.com
+
+Step 2: Sign in
+→ Use Google account
+→ Don't have one? Create free account
+
+Step 3: Create notebook
+→ Click "New Notebook"
+→ Or: File → New Notebook</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Key Differences: Colab vs Local Jupyter</h4>
+                    <code>Colab:
+- Runs on Google servers
+- Files save to Google Drive
+- Can enable GPU/TPU
+- Already has libraries installed
+- Free tier has time limits
+
+Local Jupyter:
+- Runs on your computer
+- Files save locally
+- Uses your CPU/GPU
+- You install libraries
+- No time limits</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Enabling GPU (For Deep Learning)</h4>
+                    <code>Step 1: Runtime → Change runtime type
+Step 2: Hardware accelerator: GPU
+Step 3: Save
+
+Now you have free GPU! 🚀</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Testing Colab</h4>
+                    <p>Run the same code:</p>
+                    <code># Already installed in Colab!
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import torch
+
+print(f"NumPy: {np.__version__}")
+print(f"Pandas: {pd.__version__}")
+print(f"PyTorch: {torch.__version__}")
+
+# Check if GPU available
+if torch.cuda.is_available():
+    print("✓ GPU is available!")
+else:
+    print("Using CPU (enable GPU in Runtime settings)")</code>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Best Practice</h4>
+                    <p>I recommend:</p>
+                    <ul class="styled-list">
+                        <li><strong>Primary:</strong> Use local Jupyter for daily work</li>
+                        <li><strong>Backup:</strong> Use Colab when you need GPU or are away from computer</li>
+                        <li><strong>Collaboration:</strong> Share Colab links with teammates</li>
+                    </ul>
+                    <p>All our course materials will work on both!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 5: Verification & Troubleshooting -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 5: Verification & Troubleshooting</h3>
+                    <div class="lecture-timing">(3 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>Environment Checklist</h4>
+                    <code>✓ Verification Checklist:
+
+□ Python 3.8+ installed
+□ Can launch Jupyter Notebook
+□ Can create and run cells
+□ NumPy imports successfully
+□ Pandas imports successfully
+□ Matplotlib creates plots
+□ Saved a test notebook
+□ (Optional) Google Colab account created
+
+If all checked: You're ready! 🎉</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Complete This Verification Notebook</h4>
+                    <p>Create a new notebook called <code>environment_test.ipynb</code>:</p>
+                    
+                    <code># Cell 1: Check Python version
+import sys
+print(f"Python version: {sys.version}")
+assert sys.version_info >= (3, 8), "Need Python 3.8+"
+print("✓ Python version OK")</code>
+
+                    <code># Cell 2: Check NumPy
+import numpy as np
+print(f"NumPy version: {np.__version__}")
+arr = np.array([1, 2, 3, 4, 5])
+print(f"Array: {arr}")
+print(f"Mean: {arr.mean()}")
+print("✓ NumPy working")</code>
+
+                    <code># Cell 3: Check Pandas
+import pandas as pd
+print(f"Pandas version: {pd.__version__}")
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie'],
+    'age': [25, 30, 35]
+})
+print(df)
+print("✓ Pandas working")</code>
+
+                    <code># Cell 4: Check Matplotlib
+import matplotlib.pyplot as plt
+print(f"Matplotlib version: {plt.matplotlib.__version__}")
+
+x = [1, 2, 3, 4, 5]
+y = [1, 4, 9, 16, 25]
+plt.plot(x, y, 'ro-')
+plt.title('Test Plot')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.grid(True)
+plt.show()
+print("✓ Matplotlib working")</code>
+
+                    <code># Cell 5: Success message
+print("🎉 CONGRATULATIONS! 🎉")
+print("Your AI development environment is fully set up!")
+print("\nYou successfully:")
+print("✓ Imported all required libraries")
+print("✓ Created and manipulated data")
+print("✓ Created visualizations")
+print("✓ Ready for hands-on AI development!")
+print("\nYou're ready for Session 1.2!")</code>
+                </div>
+
+                <div class="highlight-box warning">
+                    <h4>Common Issues & Fixes</h4>
+                    <p><strong>Problem:</strong> "ModuleNotFoundError: No module named 'numpy'"<br>
+                    <strong>Solution:</strong> <code>$ conda install numpy</code> or restart Jupyter after installation</p>
+                    
+                    <p><strong>Problem:</strong> Plot doesn't show<br>
+                    <strong>Solution:</strong> Add this to first cell: <code>%matplotlib inline</code></p>
+                    
+                    <p><strong>Problem:</strong> Jupyter won't start<br>
+                    <strong>Solution:</strong></p>
+                    <ol>
+                        <li>Check if already running (close other instances)</li>
+                        <li>Try: <code>jupyter notebook --port 8889</code> (different port)</li>
+                        <li>Reinstall: <code>conda install jupyter</code></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Activity -->
+    <section class="content-section">
+        <div class="container">
+            <div class="interactive-element">
+                <h4>🚀 Hands-On Activity: Environment Setup Challenge</h4>
+                <p>Create a new notebook and run this code to verify everything works:</p>
+                
+                <div class="content-box">
+                    <code># AI Environment Setup Challenge
+# Goal: Verify all components working
+
+print("="*50)
+print("AI ENGINEERING BOOTCAMP - ENVIRONMENT TEST")
+print("="*50)
+
+# Test 1: Imports
+print("\n[Test 1] Importing libraries...")
+try:
+    import numpy as np
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    print("✓ All libraries imported successfully")
+except ImportError as e:
+    print(f"✗ Import failed: {e}")
+
+# Test 2: NumPy computation
+print("\n[Test 2] NumPy computation...")
+arr = np.random.randn(5, 5)
+result = arr.mean()
+print(f"✓ Created 5x5 array, mean = {result:.4f}")
+
+# Test 3: Pandas DataFrame
+print("\n[Test 3] Pandas DataFrame...")
+df = pd.DataFrame({
+    'Name': ['Alice', 'Bob', 'Charlie', 'Diana'],
+    'Score': [95, 87, 92, 88]
+})
+print("✓ Created DataFrame:")
+print(df)
+
+# Test 4: Visualization
+print("\n[Test 4] Creating visualization...")
+fig, ax = plt.subplots(figsize=(8, 5))
+df.plot(x='Name', y='Score', kind='bar', ax=ax, color='skyblue')
+ax.set_title('Student Scores', fontsize=14, fontweight='bold')
+ax.set_ylabel('Score')
+plt.tight_layout()
+plt.show()
+print("✓ Plot created successfully")
+
+# Success!
+print("\n" + "="*50)
+print("🎉 CONGRATULATIONS! Your environment is ready!")
+print("="*50)</code>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Expected Output</h4>
+                    <ul class="styled-list">
+                        <li>All ✓ checkmarks</li>
+                        <li>DataFrame displayed</li>
+                        <li>Bar chart shown</li>
+                        <li>Success message</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Closing & Looking Ahead</h3>
+                    <div class="lecture-timing">(1 minute)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>You're Ready to Code!</h4>
+                    <code>What We've Set Up:
+
+✓ Python programming environment
+✓ Jupyter Notebooks for interactive coding
+✓ Essential libraries (NumPy, Pandas, Matplotlib)
+✓ Cloud backup (Google Colab)
+
+Next Session:
+- Python refresher
+- NumPy for AI
+- Pandas for data
+- Matplotlib for visualization
+
+Then: Build your first ML model! 🚀</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Congratulations! You now have a complete AI development environment!</p>
+                    
+                    <p><strong>What You Can Do Now:</strong></p>
+                    <ul class="styled-list">
+                        <li>Write and run Python code</li>
+                        <li>Work with data using Pandas</li>
+                        <li>Perform numerical computations with NumPy</li>
+                        <li>Create visualizations with Matplotlib</li>
+                        <li>Use Jupyter Notebooks like a pro</li>
+                    </ul>
+
+                    <p><strong>Next Steps:</strong> After this break, we'll dive into Session 1.2:</p>
+                    <ul class="styled-list">
+                        <li>Python refresher (or intro if you're new)</li>
+                        <li>NumPy essentials for AI</li>
+                        <li>Pandas for data manipulation</li>
+                        <li>Matplotlib for visualization</li>
+                    </ul>
+
+                    <p>By the end of today, you'll have written actual code and analyzed real data!</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Before We Continue</h4>
+                    <p>Please do this now:</p>
+                    <ol>
+                        <li>Create a notebook called <code>week1_practice.ipynb</code></li>
+                        <li>Run the verification code</li>
+                        <li>Save it</li>
+                        <li>Raise hand if you have issues</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Getting Help -->
+    <section class="content-section">
+        <div class="container">
+            <div class="highlight-box info">
+                <h4>Getting Help</h4>
+                <p><strong>During This Course:</strong></p>
+                <ul class="styled-list">
+                    <li>Ask in our Discord/Slack channel</li>
+                    <li>Office hours</li>
+                    <li>Email instructor</li>
+                </ul>
+                
+                <p><strong>Online Resources:</strong></p>
+                <ul class="styled-list">
+                    <li>Stack Overflow (search your error)</li>
+                    <li>Anaconda documentation</li>
+                    <li>Jupyter documentation</li>
+                    <li>Python Discord communities</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="content-section">
+        <div class="container">
+            <div class="topic-navigation">
+                <a href="topic3.html" class="nav-button back">
+                    ← Previous: Deep Learning Intro
+                </a>
+                <a href="./" class="nav-button session">
+                    ↑ Session Overview
+                </a>
+                <div class="nav-button next" style="opacity: 0.5; pointer-events: none;">
+                    Session 1.2 → (Coming Soon)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>
+                    <strong>Week 1, Session 1.1, Topic 4: Environment Setup</strong><br>
+                    Part of the AI Engineering Course - 6-Week Intensive Curriculum
+                </p>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+                    © 2024 AI Engineering Course. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../../assets/js/navigation.js"></script>
+    <script src="../../../assets/js/topic-common.js"></script>
+    <script>
+        // Initialize topic-specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Topic completion tracking for Week 1, Session 1, Topic 4
+            window.TopicCommon.initializeTopicCompletion(1, 1, 4);
+        });
+    </script>
+</body>
+</html>
