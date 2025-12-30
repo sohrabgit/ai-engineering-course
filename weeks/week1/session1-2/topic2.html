@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NumPy Essentials - Week 1, Session 1.2 - AI Engineering Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/shared.css">
+    
+    <style>
+        /* Topic-specific styles only - common styles are in shared.css */
+    </style>
+</head>
+<body class="content-page">
+    <!-- Progress Indicator -->
+    <div class="progress-indicator" id="reading-progress"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <a href="../../../" class="logo">AI Engineering</a>
+            <ul class="nav-links">
+                <li><a href="../../../#overview">Overview</a></li>
+                <li><a href="../../../#curriculum">Curriculum</a></li>
+                <li><a href="../../../#features">Features</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="../../../">Home</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="../">Week 1</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="./index.html">Session 1.2</a>
+            <span class="breadcrumb-separator">→</span>
+            <span class="breadcrumb-current">NumPy Essentials</span>
+        </div>
+    </div>
+
+    <!-- Topic Hero -->
+    <section class="topic-hero">
+        <div class="container">
+            <div class="topic-meta">
+                <span class="session-badge">Week 1, Session 1.2, Topic 2</span>
+                <span class="duration-badge">30 minutes</span>
+            </div>
+            <h1 class="topic-title section-title">NumPy Essentials</h1>
+            <p class="topic-description">
+                Master the numerical computing foundation of AI! Learn why NumPy is 50-100x faster than pure Python, 
+                create and manipulate arrays, perform vectorized operations, and build the foundation for neural networks.
+            </p>
+        </div>
+    </section>
+
+    <!-- Learning Objectives -->
+    <section class="content-section">
+        <div class="container">
+            <h2>Learning Objectives</h2>
+            <p>By the end of this topic, you will be able to:</p>
+            <ul class="styled-list">
+                <li>Understand why NumPy is essential for AI/ML</li>
+                <li>Create and manipulate NumPy arrays efficiently</li>
+                <li>Perform vectorized operations (much faster than loops!)</li>
+                <li>Use array indexing, slicing, and reshaping</li>
+                <li>Apply linear algebra operations for ML</li>
+                <li>Understand broadcasting for efficient computations</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Introduction & Why NumPy Matters -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Introduction & Why NumPy Matters</h3>
+                    <div class="lecture-timing">(2 minutes)</div>
+                </div>
+
+                <div class="instructor-script">
+                    <p>Alright! You know Python basics. Now let's talk about <strong>NumPy</strong> - the absolute foundation of AI/ML in Python.</p>
+                    
+                    <p><strong>Quick question:</strong> Why do we need NumPy at all? Python has lists, right?</p>
+                    
+                    <p>Let me show you why with a simple example...</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>The NumPy Performance Difference</h4>
+                    <code>import numpy as np
+import time
+
+# Create a large list of numbers
+size = 1_000_000
+python_list = list(range(size))
+numpy_array = np.arange(size)
+
+# Operation: Square every number
+
+# Python way (using list comprehension)
+start = time.time()
+squared_list = [x ** 2 for x in python_list]
+python_time = time.time() - start
+
+# NumPy way
+start = time.time()
+squared_array = numpy_array ** 2
+numpy_time = time.time() - start
+
+print(f"Python list time: {python_time:.4f} seconds")
+print(f"NumPy array time: {numpy_time:.4f} seconds")
+print(f"NumPy is {python_time / numpy_time:.1f}x faster! 🚀")</code>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Expected Output</h4>
+                    <code>Python list time: 0.0876 seconds
+NumPy array time: 0.0012 seconds
+NumPy is 73.0x faster! 🚀</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p><strong>NumPy is 50-100x faster than pure Python! Why?</strong></p>
+                    <ol>
+                        <li><strong>Written in C:</strong> Low-level, optimized code</li>
+                        <li><strong>Vectorized operations:</strong> No slow Python loops</li>
+                        <li><strong>Contiguous memory:</strong> Data stored efficiently</li>
+                        <li><strong>SIMD instructions:</strong> CPU parallelism</li>
+                    </ol>
+                </div>
+
+                <div class="content-box">
+                    <h4>Bottom Line</h4>
+                    <p>For AI/ML with millions of numbers, NumPy isn't optional—it's essential!</p>
+                    <p><strong>Every major Python ML library uses NumPy:</strong></p>
+                    <ul class="styled-list">
+                        <li>Pandas (built on NumPy)</li>
+                        <li>Scikit-learn (uses NumPy arrays)</li>
+                        <li>TensorFlow/PyTorch (similar array concepts)</li>
+                        <li>SciPy (extends NumPy)</li>
+                    </ul>
+                    <p><strong>Master NumPy = Master the foundation of Python AI! ✓</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 1: NumPy Arrays Basics -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 1: NumPy Arrays Basics</h3>
+                    <div class="lecture-timing">(8 minutes)</div>
+                </div>
+
+                <div class="instructor-script">
+                    <p>Let's start with the fundamental building block: the NumPy array (ndarray).</p>
+                </div>
+
+                <!-- 1.1 Creating Arrays -->
+                <h4 style="color: var(--primary-color); margin: 2rem 0 1rem;">1.1 Creating Arrays</h4>
+
+                <div class="content-box">
+                    <h4>Creating Arrays from Lists</h4>
+                    <code>import numpy as np
+
+# From Python list
+list_1d = [1, 2, 3, 4, 5]
+array_1d = np.array(list_1d)
+print("1D array:")
+print(array_1d)
+print(f"Type: {type(array_1d)}")
+print(f"Shape: {array_1d.shape}")
+print(f"Data type: {array_1d.dtype}")
+
+# 2D array (matrix)
+list_2d = [[1, 2, 3], 
+           [4, 5, 6], 
+           [7, 8, 9]]
+array_2d = np.array(list_2d)
+print("2D array:")
+print(array_2d)
+print(f"Shape: {array_2d.shape}")  # (rows, columns)
+print(f"Dimensions: {array_2d.ndim}")
+print(f"Total elements: {array_2d.size}")</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Special Array Creation Functions</h4>
+                    <code># Arrays of zeros (common for initialization)
+zeros = np.zeros((3, 4))  # 3 rows, 4 columns
+print("Zeros array:")
+print(zeros)
+
+# Arrays of ones
+ones = np.ones((2, 3))
+print("Ones array:")
+print(ones)
+
+# Identity matrix (1s on diagonal)
+identity = np.eye(4)
+print("Identity matrix:")
+print(identity)
+
+# Array with range of values
+range_array = np.arange(0, 10, 2)  # start, stop, step
+print(f"Range array: {range_array}")
+
+# Evenly spaced values
+linspace = np.linspace(0, 1, 5)  # start, stop, count
+print(f"Linspace: {linspace}")
+
+# Random arrays (very common in ML!)
+np.random.seed(42)  # For reproducibility
+random_array = np.random.rand(3, 3)  # Uniform [0, 1)
+print("Random array:")
+print(random_array)</code>
+                </div>
+
+                <div class="highlight-box info">
+                    <h4>Why This Matters in ML</h4>
+                    <p>In ML:</p>
+                    <ul class="styled-list">
+                        <li><strong>zeros/ones:</strong> Initialize weights, create masks</li>
+                        <li><strong>random:</strong> Initialize neural network weights</li>
+                        <li><strong>arange/linspace:</strong> Create training iterations, ranges</li>
+                        <li><strong>eye:</strong> Identity matrix for linear algebra</li>
+                    </ul>
+                    <code># Example: Initialize neural network weights
+weights_layer1 = np.random.randn(784, 128) * 0.01  # Small random values
+biases_layer1 = np.zeros(128)
+print(f"Weights shape: {weights_layer1.shape}")
+print(f"Biases shape: {biases_layer1.shape}")</code>
+                </div>
+
+                <!-- 1.2 Array Attributes -->
+                <h4 style="color: var(--primary-color); margin: 2rem 0 1rem;">1.2 Array Attributes and Data Types</h4>
+
+                <div class="content-box">
+                    <h4>Understanding Array Attributes</h4>
+                    <code># Create sample array
+arr = np.array([[1, 2, 3, 4],
+                [5, 6, 7, 8],
+                [9, 10, 11, 12]])
+
+print("Array:")
+print(arr)
+
+# Key attributes
+print(f"Shape (dimensions): {arr.shape}")      # (3, 4)
+print(f"Size (total elements): {arr.size}")    # 12
+print(f"Number of dimensions: {arr.ndim}")     # 2
+print(f"Data type: {arr.dtype}")               # int64
+print(f"Item size (bytes): {arr.itemsize}")    # 8
+print(f"Total bytes: {arr.nbytes}")            # 96
+
+# Data types matter for memory and speed!
+int_array = np.array([1, 2, 3], dtype=np.int32)
+float_array = np.array([1, 2, 3], dtype=np.float32)
+
+print(f"Int32 array: {int_array.dtype}, {int_array.nbytes} bytes")
+print(f"Float32 array: {float_array.dtype}, {float_array.nbytes} bytes")</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p><strong>Data types are crucial in ML:</strong></p>
+                    <ul class="styled-list">
+                        <li><strong>float32:</strong> Most common for deep learning (balance of precision/speed)</li>
+                        <li><strong>float64:</strong> Higher precision, more memory</li>
+                        <li><strong>int32/int64:</strong> For labels, indices</li>
+                        <li><strong>bool:</strong> For masks, filtering</li>
+                    </ul>
+                    <p>Choose the right type to save memory and speed up computation!</p>
+                </div>
+
+                <!-- 1.3 Array Indexing -->
+                <h4 style="color: var(--primary-color); margin: 2rem 0 1rem;">1.3 Array Indexing and Slicing</h4>
+
+                <div class="content-box">
+                    <h4>Indexing Arrays</h4>
+                    <code># 1D array indexing
+arr_1d = np.array([10, 20, 30, 40, 50])
+
+print("1D array:", arr_1d)
+print(f"First element: {arr_1d[0]}")
+print(f"Last element: {arr_1d[-1]}")
+print(f"Slice [1:4]: {arr_1d[1:4]}")  # Elements 1, 2, 3
+print(f"Every other: {arr_1d[::2]}")  # Step of 2
+
+# 2D array indexing
+arr_2d = np.array([[1, 2, 3, 4],
+                   [5, 6, 7, 8],
+                   [9, 10, 11, 12]])
+
+print("2D array:")
+print(arr_2d)
+
+# Access single element
+print(f"Element at [0, 0]: {arr_2d[0, 0]}")    # 1
+print(f"Element at [1, 2]: {arr_2d[1, 2]}")    # 7
+
+# Access rows and columns
+print(f"First row: {arr_2d[0]}")       # or arr_2d[0, :]
+print(f"First column: {arr_2d[:, 0]}")
+
+# Slicing rows and columns
+print("Subarray [0:2, 1:3]:")
+print(arr_2d[0:2, 1:3])  # First 2 rows, columns 1-2</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Boolean Indexing (Powerful for ML!)</h4>
+                    <code># Boolean indexing - filter arrays based on conditions
+arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+# Create boolean mask
+mask = arr > 5
+print(f"Array: {arr}")
+print(f"Mask (arr > 5): {mask}")
+print(f"Filtered values: {arr[mask]}")
+
+# One line filtering
+print(f"Values > 5: {arr[arr > 5]}")
+print(f"Even values: {arr[arr % 2 == 0]}")
+
+# ML Example: Filter predictions
+predictions = np.array([0.2, 0.8, 0.4, 0.9, 0.3, 0.7])
+confident = predictions[predictions > 0.5]
+print(f"Confident predictions (>0.5): {confident}")</code>
+                </div>
+
+                <div class="highlight-box info">
+                    <h4>Boolean Indexing is HUGE in ML</h4>
+                    <ul class="styled-list">
+                        <li>Filter training data</li>
+                        <li>Remove outliers</li>
+                        <li>Apply thresholds to predictions</li>
+                        <li>Mask invalid values</li>
+                    </ul>
+                    <p><strong>You'll use this constantly!</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 2: Array Operations -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 2: Array Operations</h3>
+                    <div class="lecture-timing">(10 minutes)</div>
+                </div>
+
+                <div class="instructor-script">
+                    <p>This is where NumPy shines! Operations on entire arrays without loops.</p>
+                </div>
+
+                <!-- 2.1 Vectorized Operations -->
+                <h4 style="color: var(--primary-color); margin: 2rem 0 1rem;">2.1 Vectorized Operations</h4>
+
+                <div class="content-box">
+                    <h4>Basic Vectorized Operations</h4>
+                    <code># Element-wise arithmetic
+arr = np.array([1, 2, 3, 4, 5])
+
+print(f"Original: {arr}")
+print(f"Add 10: {arr + 10}")
+print(f"Multiply by 2: {arr * 2}")
+print(f"Square: {arr ** 2}")
+print(f"Square root: {np.sqrt(arr)}")
+
+# Operations between arrays
+arr1 = np.array([1, 2, 3, 4])
+arr2 = np.array([10, 20, 30, 40])
+
+print(f"arr1: {arr1}")
+print(f"arr2: {arr2}")
+print(f"Addition: {arr1 + arr2}")
+print(f"Multiplication: {arr1 * arr2}")  # Element-wise, not matrix!
+print(f"Division: {arr2 / arr1}")
+
+# 2D operations
+matrix = np.array([[1, 2, 3],
+                   [4, 5, 6]])
+
+print("Original matrix:")
+print(matrix)
+print("\nMultiply by 10:")
+print(matrix * 10)
+print("\nSquare each element:")
+print(matrix ** 2)</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Mathematical Functions & Aggregations</h4>
+                    <code># Universal functions (ufuncs)
+arr = np.array([0, np.pi/2, np.pi])
+
+print(f"Array: {arr}")
+print(f"sin: {np.sin(arr)}")
+print(f"cos: {np.cos(arr)}")
+print(f"exp: {np.exp([1, 2, 3])}")
+print(f"log: {np.log([1, 2, 3, 4, 5])}")
+
+# Aggregation functions
+data = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+print(f"Data: {data}")
+print(f"Sum: {np.sum(data)}")
+print(f"Mean: {np.mean(data)}")
+print(f"Median: {np.median(data)}")
+print(f"Std deviation: {np.std(data)}")
+print(f"Min: {np.min(data)}")
+print(f"Max: {np.max(data)}")
+print(f"Arg max (index of max): {np.argmax(data)}")
+
+# 2D aggregations
+matrix = np.array([[1, 2, 3],
+                   [4, 5, 6],
+                   [7, 8, 9]])
+
+print("Matrix:")
+print(matrix)
+print(f"Sum of all elements: {np.sum(matrix)}")
+print(f"Sum of each column (axis=0): {np.sum(matrix, axis=0)}")
+print(f"Sum of each row (axis=1): {np.sum(matrix, axis=1)}")
+print(f"Mean of each column: {np.mean(matrix, axis=0)}")</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>ML Example: Data Normalization</h4>
+                    <code># Common ML scenario: normalize data
+data = np.array([10, 20, 30, 40, 50])
+
+# Z-score normalization
+mean = np.mean(data)
+std = np.std(data)
+normalized = (data - mean) / std
+
+print(f"Original: {data}")
+print(f"Mean: {mean}, Std: {std}")
+print(f"Normalized: {normalized}")
+print(f"New mean: {np.mean(normalized):.10f}")  # ~0
+print(f"New std: {np.std(normalized):.10f}")    # ~1</code>
+                </div>
+
+                <!-- 2.2 Broadcasting -->
+                <h4 style="color: var(--primary-color); margin: 2rem 0 1rem;">2.2 Broadcasting</h4>
+
+                <div class="instructor-script">
+                    <p>Broadcasting is one of NumPy's most powerful features. It lets you operate on arrays of different shapes without copying data!</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>Broadcasting Basics</h4>
+                    <code># Broadcasting: operating on arrays of different shapes
+
+# Example 1: Array + Scalar
+arr = np.array([1, 2, 3, 4])
+print(f"Array: {arr}")
+print(f"Array + 10: {arr + 10}")  # 10 is "broadcast" to match array shape
+
+# Example 2: 2D array + 1D array
+matrix = np.array([[1, 2, 3],
+                   [4, 5, 6],
+                   [7, 8, 9]])
+row = np.array([10, 20, 30])
+
+print("Matrix:")
+print(matrix)
+print(f"\nRow to add: {row}")
+print("\nMatrix + row (broadcasts row to each matrix row):")
+print(matrix + row)
+
+# Example 3: Column broadcasting
+col = np.array([[10],
+                [20],
+                [30]])
+
+print("Column to add:")
+print(col)
+print("\nMatrix + column (broadcasts column to each matrix column):")
+print(matrix + col)</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Broadcasting in Practice: ML Data Normalization</h4>
+                    <code># Real ML scenario: Normalizing a dataset
+
+# Dataset: 5 samples, 3 features each
+X = np.array([[1.0, 2.0, 3.0],
+              [4.0, 5.0, 6.0],
+              [7.0, 8.0, 9.0],
+              [2.0, 4.0, 6.0],
+              [3.0, 6.0, 9.0]])
+
+print("Original data:")
+print(X)
+print(f"Shape: {X.shape}")
+
+# Min-Max normalization per feature
+# Formula: (x - min) / (max - min)
+min_vals = X.min(axis=0)  # Min of each column
+max_vals = X.max(axis=0)  # Max of each column
+
+print(f"Min values per feature: {min_vals}")
+print(f"Max values per feature: {max_vals}")
+
+# Normalize (all operations broadcast!)
+X_normalized = (X - min_vals) / (max_vals - min_vals)
+
+print("Normalized data (0-1 range):")
+print(X_normalized)
+print(f"\nNew min per feature: {X_normalized.min(axis=0)}")
+print(f"New max per feature: {X_normalized.max(axis=0)}")</code>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Why Broadcasting is Amazing</h4>
+                    <p><strong>Without broadcasting:</strong></p>
+                    <code># Would need loops (slow!)
+for i in range(len(matrix)):
+    for j in range(len(matrix[i])):
+        result[i][j] = matrix[i][j] + row[j]</code>
+                    
+                    <p><strong>With broadcasting:</strong></p>
+                    <code>result = matrix + row  # One line, super fast!</code>
+                    
+                    <p><strong>This is why NumPy is so powerful for ML!</strong></p>
+                </div>
+
+                <!-- 2.3 Reshaping Arrays -->
+                <h4 style="color: var(--primary-color); margin: 2rem 0 1rem;">2.3 Reshaping Arrays</h4>
+
+                <div class="content-box">
+                    <h4>Reshaping Operations</h4>
+                    <code># Reshaping - change array dimensions without changing data
+
+# Create 1D array
+arr = np.arange(12)
+print(f"Original 1D array: {arr}")
+print(f"Shape: {arr.shape}")
+
+# Reshape to 2D
+arr_2d = arr.reshape(3, 4)  # 3 rows, 4 columns
+print("Reshaped to (3, 4):")
+print(arr_2d)
+
+# Reshape to different 2D
+arr_2d_alt = arr.reshape(4, 3)  # 4 rows, 3 columns
+print("Reshaped to (4, 3):")
+print(arr_2d_alt)
+
+# Use -1 to let NumPy figure out dimension
+arr_auto = arr.reshape(3, -1)  # 3 rows, NumPy figures out columns
+print(f"Reshaped with -1 to (3, -1): shape {arr_auto.shape}")
+print(arr_auto)</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Flatten and Transpose</h4>
+                    <code># Flatten - convert to 1D
+matrix = np.array([[1, 2, 3],
+                   [4, 5, 6]])
+
+print("Original matrix:")
+print(matrix)
+print(f"Shape: {matrix.shape}")
+
+flattened = matrix.flatten()
+print(f"Flattened: {flattened}")
+print(f"Shape: {flattened.shape}")
+
+# Transpose - swap rows and columns
+print("Original:")
+print(matrix)
+print("\nTransposed:")
+print(matrix.T)
+print(f"Original shape: {matrix.shape}")
+print(f"Transposed shape: {matrix.T.shape}")
+
+# Adding dimensions
+arr_1d = np.array([1, 2, 3])
+print(f"1D array: {arr_1d}, shape: {arr_1d.shape}")
+
+# Add axis to make row vector
+row_vector = arr_1d[np.newaxis, :]  # or arr_1d.reshape(1, -1)
+print(f"Row vector: {row_vector}, shape: {row_vector.shape}")
+
+# Add axis to make column vector
+col_vector = arr_1d[:, np.newaxis]  # or arr_1d.reshape(-1, 1)
+print("Column vector:")
+print(col_vector)
+print(f"Shape: {col_vector.shape}")</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>ML Example: Image Data Reshaping</h4>
+                    <code># Common in ML: reshape image data
+
+# Image represented as 28x28 pixels
+image = np.random.rand(28, 28)
+print(f"Image shape: {image.shape}")
+
+# Flatten for input to neural network
+flattened_image = image.reshape(-1)  # or image.flatten()
+print(f"Flattened shape: {flattened_image.shape}")  # (784,)
+
+# Batch of images: 100 images of 28x28
+batch = np.random.rand(100, 28, 28)
+print(f"\nBatch of images shape: {batch.shape}")
+
+# Flatten each image
+batch_flattened = batch.reshape(100, -1)
+print(f"Flattened batch shape: {batch_flattened.shape}")  # (100, 784)</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 3: Linear Algebra Operations -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 3: Linear Algebra Operations</h3>
+                    <div class="lecture-timing">(5 minutes)</div>
+                </div>
+
+                <div class="instructor-script">
+                    <p>Linear algebra is the language of machine learning. Neural networks, deep learning - it's all linear algebra with NumPy!</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>Matrix Operations</h4>
+                    <code># Matrix multiplication (dot product)
+A = np.array([[1, 2],
+              [3, 4]])
+B = np.array([[5, 6],
+              [7, 8]])
+
+print("Matrix A:")
+print(A)
+print("\nMatrix B:")
+print(B)
+
+# Element-wise multiplication (NOT matrix multiplication!)
+print("Element-wise multiplication (A * B):")
+print(A * B)
+
+# Matrix multiplication (proper)
+print("Matrix multiplication (A @ B) or np.dot(A, B):")
+print(A @ B)  # Python 3.5+
+# Or: print(np.dot(A, B))
+
+# Vector dot product
+v1 = np.array([1, 2, 3])
+v2 = np.array([4, 5, 6])
+
+dot_product = np.dot(v1, v2)
+print(f"v1: {v1}")
+print(f"v2: {v2}")
+print(f"Dot product: {dot_product}")  # 1*4 + 2*5 + 3*6 = 32</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Neural Network Forward Pass Example</h4>
+                    <code># Simulated neural network layer
+# Formula: output = input @ weights + bias
+
+# Input: 1 sample with 4 features
+X = np.array([[1.0, 2.0, 3.0, 4.0]])  # Shape: (1, 4)
+
+# Weights: 4 inputs to 3 neurons
+W = np.array([[0.1, 0.2, 0.3],   # From input 1 to each neuron
+              [0.4, 0.5, 0.6],   # From input 2
+              [0.7, 0.8, 0.9],   # From input 3
+              [1.0, 1.1, 1.2]])  # From input 4
+# Shape: (4, 3)
+
+# Biases: one per neuron
+b = np.array([[0.1, 0.2, 0.3]])  # Shape: (1, 3)
+
+print("Input (X):")
+print(X)
+print(f"Shape: {X.shape}")
+
+print("Weights (W):")
+print(W)
+print(f"Shape: {W.shape}")
+
+print("Biases (b):")
+print(b)
+print(f"Shape: {b.shape}")
+
+# Forward pass: linear transformation
+Z = X @ W + b  # Matrix multiplication + broadcasting!
+print("Output (Z = X @ W + b):")
+print(Z)
+print(f"Shape: {Z.shape}")
+
+# Apply activation function (ReLU: max(0, x))
+A = np.maximum(0, Z)
+print("After ReLU activation:")
+print(A)</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Batch Processing</h4>
+                    <code># Process multiple samples at once (batching)
+
+# 3 samples (batch), 4 features each
+X_batch = np.array([[1.0, 2.0, 3.0, 4.0],
+                    [2.0, 3.0, 4.0, 5.0],
+                    [3.0, 4.0, 5.0, 6.0]])  # Shape: (3, 4)
+
+# Same weights and biases
+W = np.array([[0.1, 0.2, 0.3],
+              [0.4, 0.5, 0.6],
+              [0.7, 0.8, 0.9],
+              [1.0, 1.1, 1.2]])  # Shape: (4, 3)
+
+b = np.array([[0.1, 0.2, 0.3]])  # Shape: (1, 3)
+
+print("Batch input:")
+print(X_batch)
+print(f"Shape: {X_batch.shape}")
+
+# Process entire batch at once!
+Z_batch = X_batch @ W + b  # Broadcasting handles the bias
+print("Batch output:")
+print(Z_batch)
+print(f"Shape: {Z_batch.shape}")
+
+A_batch = np.maximum(0, Z_batch)
+print("After ReLU:")
+print(A_batch)</code>
+                </div>
+
+                <div class="highlight-box info">
+                    <h4>This is EXACTLY How Neural Networks Work</h4>
+                    <ol>
+                        <li>Input data (X)</li>
+                        <li>Multiply by weights (W)</li>
+                        <li>Add bias (b)</li>
+                        <li>Apply activation function</li>
+                        <li>Repeat for each layer</li>
+                    </ol>
+                    <p><strong>NumPy makes this fast for millions of parameters!</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 4: Practical ML Examples -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 4: Practical ML Examples</h3>
+                    <div class="lecture-timing">(5 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>Complete ML Workflow Example</h4>
+                    <code># Realistic ML data processing with NumPy
+
+# Generate synthetic dataset
+np.random.seed(42)
+n_samples = 100
+n_features = 5
+
+# Features: random values
+X = np.random.randn(n_samples, n_features)
+
+# Labels: binary classification (0 or 1)
+y = np.random.randint(0, 2, size=n_samples)
+
+print("Dataset created:")
+print(f"X shape: {X.shape} - {n_samples} samples, {n_features} features")
+print(f"y shape: {y.shape} - {n_samples} labels")
+
+# 1. Data exploration
+print("Data Statistics:")
+print(f"Mean per feature: {X.mean(axis=0)}")
+print(f"Std per feature: {X.std(axis=0)}")
+print(f"Class distribution: {np.bincount(y)}")
+
+# 2. Standardize features (mean=0, std=1)
+X_mean = X.mean(axis=0)
+X_std = X.std(axis=0)
+X_standardized = (X - X_mean) / X_std
+
+print("After standardization:")
+print(f"New mean per feature: {X_standardized.mean(axis=0)}")
+print(f"New std per feature: {X_standardized.std(axis=0)}")
+
+# 3. Train-test split (80-20)
+split_idx = int(0.8 * n_samples)
+X_train = X_standardized[:split_idx]
+X_test = X_standardized[split_idx:]
+y_train = y[:split_idx]
+y_test = y[split_idx:]
+
+print("Data split:")
+print(f"Training: {X_train.shape}, {y_train.shape}")
+print(f"Testing: {X_test.shape}, {y_test.shape}")
+
+# 4. Simple linear model weights (random initialization)
+n_outputs = 1
+weights = np.random.randn(n_features, n_outputs) * 0.01
+bias = np.zeros((1, n_outputs))
+
+print("Model initialized:")
+print(f"Weights shape: {weights.shape}")
+print(f"Bias shape: {bias.shape}")
+
+# 5. Make predictions
+predictions = X_test @ weights + bias
+print("Sample predictions (raw scores):")
+print(predictions[:5].flatten())
+
+# 6. Apply threshold for classification
+threshold = 0.0
+binary_predictions = (predictions > threshold).astype(int).flatten()
+print("Sample binary predictions:")
+print(binary_predictions[:10])
+print(f"Actual labels:")
+print(y_test[:10])
+
+# 7. Calculate accuracy
+accuracy = np.mean(binary_predictions == y_test)
+print(f"Accuracy: {accuracy:.2%}")</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Image Processing Example</h4>
+                    <code># Working with image data (common in Computer Vision)
+
+# Simulate a grayscale image (28x28 pixels)
+image = np.random.randint(0, 256, size=(28, 28))
+print("Grayscale image shape:", image.shape)
+print(f"Min pixel value: {image.min()}")
+print(f"Max pixel value: {image.max()}")
+
+# Normalize pixel values to [0, 1]
+image_normalized = image / 255.0
+print(f"Normalized min: {image_normalized.min()}")
+print(f"Normalized max: {image_normalized.max()}")
+
+# Flatten for neural network input
+image_flat = image_normalized.flatten()
+print(f"Flattened shape: {image_flat.shape}")
+
+# Batch of images
+batch_size = 32
+batch_images = np.random.randint(0, 256, size=(batch_size, 28, 28))
+print(f"Batch shape: {batch_images.shape}")
+
+# Normalize and flatten entire batch
+batch_normalized = batch_images / 255.0
+batch_flat = batch_normalized.reshape(batch_size, -1)
+print(f"Processed batch shape: {batch_flat.shape}")
+
+# Add channel dimension for RGB (color images)
+rgb_image = np.random.randint(0, 256, size=(28, 28, 3))  # Height, Width, Channels
+print(f"RGB image shape: {rgb_image.shape}")</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Activity -->
+    <section class="content-section">
+        <div class="container">
+            <div class="interactive-element">
+                <h4>🚀 Hands-On Activity: NumPy Practice Challenge</h4>
+                <p>Test your NumPy skills with this practical exercise:</p>
+                
+                <div class="content-box">
+                    <code># NumPy Practice Challenge
+# Goal: Process a mini dataset like a data scientist
+
+import numpy as np
+np.random.seed(42)
+
+# Create synthetic student data
+n_students = 50
+students_data = {
+    'math_scores': np.random.normal(75, 15, n_students),
+    'science_scores': np.random.normal(80, 12, n_students),
+    'english_scores': np.random.normal(78, 10, n_students)
+}
+
+# Convert to matrix (students x subjects)
+X = np.column_stack([students_data['math_scores'], 
+                     students_data['science_scores'], 
+                     students_data['english_scores']])
+
+print("Student Data Analysis")
+print("=" * 30)
+print(f"Data shape: {X.shape}")
+print(f"Subjects: Math, Science, English")
+
+# Challenge tasks:
+print("\n1. BASIC STATISTICS")
+print(f"Mean per subject: {X.mean(axis=0)}")
+print(f"Std per subject: {X.std(axis=0)}")
+print(f"Max per subject: {X.max(axis=0)}")
+
+print("\n2. STUDENT PERFORMANCE")
+total_scores = X.sum(axis=1)
+average_scores = X.mean(axis=1)
+print(f"Top student total: {total_scores.max():.1f}")
+print(f"Class average: {average_scores.mean():.1f}")
+
+print("\n3. FILTERING")
+high_performers = X[average_scores > 80]
+print(f"Students with >80 average: {len(high_performers)}")
+
+print("\n4. NORMALIZATION")
+X_normalized = (X - X.mean(axis=0)) / X.std(axis=0)
+print(f"Normalized data shape: {X_normalized.shape}")
+print(f"New means: {X_normalized.mean(axis=0)}")  # Should be ~0
+
+print("\n🎉 NumPy Challenge Complete!")</code>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Try These Extensions</h4>
+                    <ul class="styled-list">
+                        <li>Find students who scored > 90 in any subject</li>
+                        <li>Calculate correlation between subjects</li>
+                        <li>Create grade categories (A, B, C, D, F)</li>
+                        <li>Simulate adding a new subject with random scores</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing & NumPy Cheat Sheet -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Closing & NumPy Cheat Sheet</h3>
+                    <div class="lecture-timing">(2 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>NumPy Quick Reference for AI/ML</h4>
+                    <code>===============================================
+NUMPY QUICK REFERENCE FOR AI/ML
+===============================================
+
+1. ARRAY CREATION
+  np.array([1,2,3])           # From list
+  np.zeros((3,4))             # Array of zeros
+  np.ones((2,3))              # Array of ones
+  np.arange(0,10,2)           # Range with step
+  np.random.rand(3,3)         # Random [0,1)
+  np.random.randn(3,3)        # Random normal
+
+2. ARRAY OPERATIONS
+  arr + 10                    # Add scalar (broadcast)
+  arr1 + arr2                 # Element-wise addition
+  arr ** 2                    # Element-wise power
+  arr @ matrix                # Matrix multiplication
+
+3. AGGREGATIONS
+  np.sum(arr)                 # Sum all elements
+  np.mean(arr, axis=0)        # Mean per column
+  np.std(arr)                 # Standard deviation
+  np.max(arr), np.min(arr)    # Max, min
+
+4. INDEXING & SLICING
+  arr[0]                      # First element
+  arr[1:4]                    # Slice
+  arr[arr > 5]                # Boolean indexing
+  matrix[0, :]                # First row
+  matrix[:, 1]                # Second column
+
+5. RESHAPING
+  arr.reshape(3, 4)           # Change shape
+  arr.flatten()               # To 1D
+  arr.T                       # Transpose
+
+6. ML COMMON PATTERNS
+  (X - X.mean()) / X.std()    # Standardization
+  (X - X.min()) / (X.max()-X.min())  # Min-max norm
+  X @ W + b                   # Neural network layer
+  np.maximum(0, Z)            # ReLU activation
+
+Remember: NumPy is FAST because it's vectorized!
+Avoid Python loops - use NumPy operations instead!
+===============================================</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p><strong>Fantastic! You've learned NumPy essentials! Let's recap:</strong></p>
+                    
+                    <p><strong>What We Covered:</strong></p>
+                    <ul class="styled-list">
+                        <li>✅ Why NumPy is 50-100x faster than Python lists</li>
+                        <li>✅ Creating and manipulating arrays</li>
+                        <li>✅ Vectorized operations (no loops!)</li>
+                        <li>✅ Broadcasting (different shapes)</li>
+                        <li>✅ Reshaping and indexing</li>
+                        <li>✅ Linear algebra for neural networks</li>
+                        <li>✅ Real ML workflows</li>
+                    </ul>
+
+                    <p><strong>Key Takeaways:</strong></p>
+                    <ol>
+                        <li><strong>NumPy is the foundation</strong> - everything in Python ML uses it</li>
+                        <li><strong>Think in arrays</strong> - not loops!</li>
+                        <li><strong>Broadcasting saves memory</strong> - operates on different shapes</li>
+                        <li><strong>Vectorization is fast</strong> - let NumPy do the work</li>
+                        <li><strong>Linear algebra = ML</strong> - matrix operations everywhere</li>
+                    </ol>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>The NumPy Mindset</h4>
+                    <p><strong>❌ Don't think:</strong> "Loop through each element"<br>
+                    <strong>✅ Think:</strong> "What operation on the whole array?"</p>
+                    
+                    <p><strong>Example:</strong></p>
+                    <code># Slow Python way
+result = []
+for x in data:
+    result.append(x ** 2)
+
+# Fast NumPy way
+result = data ** 2  # Done!</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Next Up: Pandas</h4>
+                    <p>NumPy gives us fast arrays, but working with labeled data (like spreadsheets) is still tedious. That's where <strong>Pandas</strong> comes in!</p>
+                    <p><strong>Pandas = NumPy + Labels + SQL-like operations</strong></p>
+                    <p>Ready to make data manipulation even easier? Let's go! 🐼</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="content-section">
+        <div class="container">
+            <div class="topic-navigation">
+                <a href="topic1.html" class="nav-button back">
+                    ← Previous: Python Refresher
+                </a>
+                <a href="./index.html" class="nav-button session">
+                    ↑ Session Overview
+                </a>
+                <a href="#" class="nav-button next" style="opacity: 0.5; pointer-events: none;">
+                    Topic 3 → (Coming Soon)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>
+                    <strong>Week 1, Session 1.2, Topic 2: NumPy Essentials</strong><br>
+                    Part of the AI Engineering Course - 6-Week Intensive Curriculum
+                </p>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+                    © 2024 AI Engineering Course. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../../assets/js/navigation.js"></script>
+    <script src="../../../assets/js/topic-common.js"></script>
+    <script>
+        // Initialize topic-specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Topic completion tracking for Week 1, Session 2, Topic 2
+            window.TopicCommon.initializeTopicCompletion(1, 2, 2);
+        });
+    </script>
+</body>
+</html>
