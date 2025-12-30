@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Refresher - Week 1, Session 1.2 - AI Engineering Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/shared.css">
+    
+    <style>
+        /* Topic-specific styles only - common styles are in shared.css */
+    </style>
+</head>
+<body class="content-page">
+    <!-- Progress Indicator -->
+    <div class="progress-indicator" id="reading-progress"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <a href="../../../" class="logo">AI Engineering</a>
+            <ul class="nav-links">
+                <li><a href="../../../#overview">Overview</a></li>
+                <li><a href="../../../#curriculum">Curriculum</a></li>
+                <li><a href="../../../#features">Features</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="../../../">Home</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="../">Week 1</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="./">Session 1.2</a>
+            <span class="breadcrumb-separator">→</span>
+            <span class="breadcrumb-current">Python Refresher</span>
+        </div>
+    </div>
+
+    <!-- Topic Hero -->
+    <section class="topic-hero">
+        <div class="container">
+            <div class="topic-meta">
+                <span class="session-badge">Week 1, Session 1.2, Topic 1</span>
+                <span class="duration-badge">30 minutes</span>
+            </div>
+            <h1 class="topic-title section-title">Python Refresher</h1>
+            <p class="topic-description">
+                Master Python fundamentals for AI development. We'll cover the essential language features 
+                and patterns you'll use throughout your AI engineering journey, with hands-on examples.
+            </p>
+        </div>
+    </section>
+
+    <!-- Learning Objectives -->
+    <section class="content-section">
+        <div class="container">
+            <h2>Learning Objectives</h2>
+            <p>By the end of this topic, students will be able to:</p>
+            <ul class="styled-list">
+                <li>Use Python's core data types (strings, numbers, lists, dictionaries)</li>
+                <li>Write and use functions effectively</li>
+                <li>Understand and implement loops and conditionals</li>
+                <li>Work with list comprehensions and basic file operations</li>
+                <li>Debug common Python errors</li>
+                <li>Apply Python fundamentals to AI/ML contexts</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Opening & Bridge -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Opening & Bridge from Session 1.1</h3>
+                    <div class="lecture-timing">(3 minutes)</div>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Welcome back! In Session 1.1, you learned the theory - what AI is, how machine learning works, and you set up your development environment. Now it's time to get our hands dirty with code!</p>
+                    
+                    <p>Before we dive into AI libraries like NumPy and Pandas, let's make sure everyone is comfortable with Python fundamentals.</p>
+                </div>
+
+                <div class="highlight-box info">
+                    <h4>Why Python for AI?</h4>
+                    <ul class="styled-list">
+                        <li><strong>Simple syntax</strong> - focus on concepts, not syntax complexity</li>
+                        <li><strong>Rich ecosystem</strong> - thousands of AI/ML libraries</li>
+                        <li><strong>Interactive development</strong> - perfect for experimentation</li>
+                        <li><strong>Industry standard</strong> - used at Google, OpenAI, Tesla, etc.</li>
+                        <li><strong>Great community</strong> - lots of help available</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h4>Session Overview</h4>
+                    <p>Today we'll cover:</p>
+                    <ol>
+                        <li><strong>Python Refresher</strong> (30 min) - Core language features</li>
+                        <li><strong>NumPy Essentials</strong> (30 min) - Numerical computing foundation</li>
+                        <li><strong>Pandas for Data</strong> (30 min) - Data manipulation powerhouse</li>
+                        <li><strong>First ML Project</strong> (30 min) - Put it all together!</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 1: Python Basics -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 1: Python Basics - Variables and Data Types</h3>
+                    <div class="lecture-timing">(8 minutes)</div>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Python is beautiful because it's readable. If you can read English, you can understand Python code.</p>
+                    
+                    <p>Let's start with the absolute basics: variables and data types."</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>Variables and Basic Types</h4>
+                    <code># Variables in Python - no type declaration needed!
+name = "Alice"
+age = 25
+height = 5.6
+is_student = True
+
+# Python figures out the type automatically
+print(f"Name: {name}, Type: {type(name)}")
+print(f"Age: {age}, Type: {type(age)}")
+print(f"Height: {height}, Type: {type(height)}")
+print(f"Is Student: {is_student}, Type: {type(is_student)}")</code>
+                    
+                    <p><strong>Output:</strong></p>
+                    <code>Name: Alice, Type: &lt;class 'str'&gt;
+Age: 25, Type: &lt;class 'int'&gt;
+Height: 5.6, Type: &lt;class 'float'&gt;
+Is Student: True, Type: &lt;class 'bool'&gt;</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p><strong>Notice:</strong></p>
+                    <ul class="styled-list">
+                        <li>No <code>int age = 25</code> like in Java/C++</li>
+                        <li>Python is dynamically typed - it figures it out</li>
+                        <li><code>type()</code> function tells you what type something is</li>
+                        <li>f-strings (f"text {variable}") are the modern way to format strings</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h4>Basic Operations</h4>
+                    <code># Arithmetic
+x = 10
+y = 3
+
+print(f"Addition: {x + y}")
+print(f"Subtraction: {x - y}")
+print(f"Multiplication: {x * y}")
+print(f"Division: {x / y}")        # Returns float
+print(f"Integer Division: {x // y}")  # Returns int
+print(f"Modulo: {x % y}")
+print(f"Power: {x ** y}")          # 10^3
+
+# String operations
+first = "Data"
+last = "Science"
+full = first + " " + last  # Concatenation
+print(f"Full: {full}")
+print(f"Repeated: {first * 3}")  # Repeats the string</code>
+                </div>
+
+                <div class="interactive-element">
+                    <h4>Quick Practice</h4>
+                    <p>Your turn! Create variables for your name, favorite number, and whether you like Python. Print them with their types.</p>
+                    
+                    <div class="content-box">
+                        <h4>Example Solution</h4>
+                        <code>my_name = "Your Name"
+favorite_number = 42
+likes_python = True
+
+print(f"{my_name}'s favorite number is {favorite_number}")
+print(f"Likes Python: {likes_python}")</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 2: Lists and Dictionaries -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 2: Lists and Dictionaries</h3>
+                    <div class="lecture-timing">(4 minutes)</div>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Two data structures you'll use constantly in AI: <strong>lists</strong> (ordered collections) and <strong>dictionaries</strong> (key-value pairs)."</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>Lists</h4>
+                    <code># Lists - ordered, mutable collections
+numbers = [1, 2, 3, 4, 5]
+names = ["Alice", "Bob", "Charlie"]
+mixed = [1, "two", 3.0, True]  # Can mix types!
+
+# Accessing elements (0-indexed)
+print(f"First number: {numbers[0]}")
+print(f"Last number: {numbers[-1]}")  # Negative indexing from end
+
+# Slicing
+print(f"First three: {numbers[0:3]}")  # Start:end (end not included)
+print(f"From index 2: {numbers[2:]}")
+print(f"Up to index 3: {numbers[:3]}")
+
+# List operations
+numbers.append(6)          # Add to end
+numbers.insert(0, 0)       # Insert at position
+numbers.remove(3)          # Remove value 3
+print(f"Modified: {numbers}")
+
+# Length and membership
+print(f"Length: {len(numbers)}")
+print(f"Is 5 in list? {5 in numbers}")</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Dictionaries</h4>
+                    <code># Dictionaries - key-value pairs (like hash maps)
+student = {
+    "name": "Alice",
+    "age": 25,
+    "courses": ["Math", "CS", "Physics"],
+    "gpa": 3.8
+}
+
+# Accessing values
+print(f"Name: {student['name']}")
+print(f"Age: {student['age']}")
+print(f"Courses: {student['courses']}")
+
+# Adding/modifying
+student["email"] = "alice@university.edu"
+student["age"] = 26  # Update existing key
+print(f"\nUpdated student: {student}")
+
+# Useful methods
+print(f"\nKeys: {student.keys()}")
+print(f"Values: {student.values()}")
+
+# Safe access (won't error if key doesn't exist)
+print(f"Grade: {student.get('grade', 'Not available')}")
+
+# Checking membership
+print(f"Has 'name' key? {'name' in student}")</code>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Why These Matter for AI</h4>
+                    <p>In AI/ML:</p>
+                    <ul class="styled-list">
+                        <li><strong>Lists</strong> → Store datasets, predictions, feature values</li>
+                        <li><strong>Dictionaries</strong> → Store model configurations, hyperparameters, results</li>
+                    </ul>
+                    
+                    <div class="content-box">
+                        <h4>Example</h4>
+                        <code># Common in ML
+model_config = {
+    'learning_rate': 0.001,
+    'batch_size': 32,
+    'epochs': 100,
+    'layers': [64, 32, 16]
+}
+
+# Dataset might be list of dictionaries
+dataset = [
+    {'features': [1, 2, 3], 'label': 0},
+    {'features': [4, 5, 6], 'label': 1},
+]</code>
+                    </div>
+                </div>
+
+                <div class="interactive-element">
+                    <h4>Quick Practice</h4>
+                    <p>Create a dictionary representing a house with: address, price, bedrooms, bathrooms. Then access and print the price.</p>
+                    
+                    <div class="content-box">
+                        <h4>Solution</h4>
+                        <code>house = {
+    'address': '123 Main St',
+    'price': 500000,
+    'bedrooms': 3,
+    'bathrooms': 2
+}
+print(f"House price: ${house['price']:,}")</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 3: Control Flow -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 3: Control Flow</h3>
+                    <div class="lecture-timing">(3 minutes)</div>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Every program needs decisions (if/else) and repetition (loops). Let's see Python's elegant syntax."</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>If/Else Statements</h4>
+                    <code># If-elif-else
+temperature = 75
+
+if temperature > 80:
+    print("It's hot outside!")
+    status = "hot"
+elif temperature > 60:
+    print("It's nice outside!")
+    status = "nice"
+else:
+    print("It's cold outside!")
+    status = "cold"
+
+print(f"Status: {status}")
+
+# One-liner (ternary operator)
+message = "Hot" if temperature > 80 else "Not hot"
+print(message)
+
+# Checking multiple conditions
+age = 25
+has_license = True
+
+if age >= 18 and has_license:
+    print("Can drive!")
+elif age >= 18:
+    print("Need to get a license!")
+else:
+    print("Too young to drive")</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Loops</h4>
+                    <code># For loops - iterate over sequences
+print("For loop over list:")
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(f"  {fruit}")
+
+# For loop with range
+print("\nFor loop with range:")
+for i in range(5):  # 0, 1, 2, 3, 4
+    print(f"  Number: {i}")
+
+# Range with start and step
+print("\nEven numbers:")
+for i in range(0, 10, 2):  # Start, end, step
+    print(f"  {i}", end=" ")
+print()
+
+# While loops
+print("\nWhile loop:")
+count = 0
+while count < 5:
+    print(f"  Count is {count}")
+    count += 1
+
+# Loop with break and continue
+print("\nBreak and continue:")
+for i in range(10):
+    if i == 3:
+        continue  # Skip this iteration
+    if i == 7:
+        break     # Exit loop
+    print(f"  {i}", end=" ")
+print()</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>AI/ML Example</h4>
+                    <code># Common in ML: iterate through dataset
+predictions = [0.9, 0.3, 0.8, 0.2, 0.95]
+threshold = 0.5
+
+print("Classification results:")
+for i, pred in enumerate(predictions):
+    label = "Positive" if pred >= threshold else "Negative"
+    print(f"  Sample {i}: {pred:.2f} → {label}")</code>
+                    
+                    <p><strong>Output:</strong></p>
+                    <code>Classification results:
+  Sample 0: 0.90 → Positive
+  Sample 1: 0.30 → Negative
+  Sample 2: 0.80 → Positive
+  Sample 3: 0.20 → Negative
+  Sample 4: 0.95 → Positive</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 4: Functions and List Comprehensions -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 4: Functions and List Comprehensions</h3>
+                    <div class="lecture-timing">(10 minutes)</div>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Functions let you organize code into reusable blocks. In AI, you'll write functions for data preprocessing, model training, evaluation, etc."</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>Basic Functions</h4>
+                    <code># Simple function
+def greet(name):
+    """Greet someone by name."""
+    message = f"Hello, {name}!"
+    return message
+
+# Call the function
+result = greet("Alice")
+print(result)
+
+# Function with multiple parameters
+def add_numbers(a, b):
+    """Add two numbers and return the result."""
+    return a + b
+
+print(f"5 + 3 = {add_numbers(5, 3)}")
+
+# Function with default parameters
+def power(base, exponent=2):
+    """Raise base to exponent (default is 2)."""
+    return base ** exponent
+
+print(f"3^2 = {power(3)}")        # Uses default
+print(f"3^4 = {power(3, 4)}")     # Overrides default
+
+# Multiple return values
+def min_max(numbers):
+    """Return both min and max of a list."""
+    return min(numbers), max(numbers)
+
+numbers = [3, 7, 1, 9, 2]
+minimum, maximum = min_max(numbers)
+print(f"Min: {minimum}, Max: {maximum}")</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>ML-Style Functions</h4>
+                    <code># Realistic ML function example
+def calculate_accuracy(predictions, actual):
+    """
+    Calculate classification accuracy.
+    
+    Parameters:
+    - predictions: list of predicted labels
+    - actual: list of true labels
+    
+    Returns:
+    - accuracy: float between 0 and 1
+    """
+    if len(predictions) != len(actual):
+        raise ValueError("Lists must be same length!")
+    
+    correct = 0
+    for pred, true in zip(predictions, actual):
+        if pred == true:
+            correct += 1
+    
+    accuracy = correct / len(predictions)
+    return accuracy
+
+# Test the function
+preds = [1, 0, 1, 1, 0, 1]
+actuals = [1, 0, 1, 0, 0, 1]
+
+acc = calculate_accuracy(preds, actuals)
+print(f"Accuracy: {acc:.2%}")  # Format as percentage</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Lambda Functions</h4>
+                    <code># Lambda functions - short anonymous functions
+square = lambda x: x ** 2
+print(f"Square of 5: {square(5)}")
+
+# Often used with map, filter
+numbers = [1, 2, 3, 4, 5]
+
+# Map - apply function to each element
+squared = list(map(lambda x: x ** 2, numbers))
+print(f"Squared: {squared}")
+
+# Filter - keep elements that satisfy condition
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+print(f"Even numbers: {evens}")
+
+# Common in ML: normalize data
+data = [10, 20, 30, 40, 50]
+max_val = max(data)
+normalized = list(map(lambda x: x / max_val, data))
+print(f"Normalized: {normalized}")</code>
+                </div>
+
+                <div class="interactive-element">
+                    <h4>Quick Practice</h4>
+                    <p>Write a function that takes a list of numbers and returns the mean (average).</p>
+                    
+                    <div class="content-box">
+                        <h4>Solution</h4>
+                        <code>def calculate_mean(numbers):
+    """Calculate the mean of a list of numbers."""
+    return sum(numbers) / len(numbers)
+
+data = [10, 20, 30, 40, 50]
+print(f"Mean: {calculate_mean(data)}")</code>
+                    </div>
+                </div>
+
+                <!-- List Comprehensions -->
+                <h4 style="color: var(--primary-color); margin: 2rem 0 1rem;">List Comprehensions (5 minutes)</h4>
+
+                <div class="instructor-script">
+                    <p>"List comprehensions are a Pythonic way to create lists. They're concise, readable, and fast. You'll see them EVERYWHERE in data science code."</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>Basic List Comprehensions</h4>
+                    <code># Traditional way
+squares = []
+for i in range(10):
+    squares.append(i ** 2)
+print(f"Traditional: {squares}")
+
+# List comprehension way (MUCH cleaner!)
+squares = [i ** 2 for i in range(10)]
+print(f"Comprehension: {squares}")
+
+# With condition
+evens = [i for i in range(20) if i % 2 == 0]
+print(f"Even numbers: {evens}")
+
+# Transform existing list
+names = ["alice", "bob", "charlie"]
+upper_names = [name.upper() for name in names]
+print(f"Uppercase: {upper_names}")
+
+# More complex transformation
+numbers = [1, 2, 3, 4, 5]
+squared_evens = [n ** 2 for n in numbers if n % 2 == 0]
+print(f"Squared even numbers: {squared_evens}")</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>ML Examples</h4>
+                    <code># Realistic ML scenarios
+
+# 1. Normalize features (scale to 0-1)
+data = [10, 20, 30, 40, 50]
+min_val, max_val = min(data), max(data)
+normalized = [(x - min_val) / (max_val - min_val) for x in data]
+print(f"Normalized data: {normalized}")
+
+# 2. Apply threshold to predictions
+predictions = [0.1, 0.6, 0.3, 0.9, 0.4]
+threshold = 0.5
+binary_preds = [1 if p >= threshold else 0 for p in predictions]
+print(f"Binary predictions: {binary_preds}")
+
+# 3. Filter dataset
+data_points = [
+    {"value": 10, "label": 0},
+    {"value": 50, "label": 1},
+    {"value": 30, "label": 0},
+    {"value": 70, "label": 1},
+]
+
+# Get all values with label 1
+positive_values = [d["value"] for d in data_points if d["label"] == 1]
+print(f"Positive class values: {positive_values}")
+
+# 4. Extract features from dataset
+features = [d["value"] for d in data_points]
+labels = [d["label"] for d in data_points]
+print(f"Features: {features}")
+print(f"Labels: {labels}")</code>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Why This Matters</h4>
+                    <p>List comprehensions are:</p>
+                    <ul class="styled-list">
+                        <li><strong>Faster:</strong> Optimized at C level</li>
+                        <li><strong>More readable:</strong> Express intent clearly</li>
+                        <li><strong>Pythonic:</strong> This is how Python pros write code</li>
+                        <li><strong>Common in ML:</strong> You'll see them constantly in real code</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-element">
+                    <h4>Quick Practice</h4>
+                    <p>Given a list of temperatures in Celsius, convert them to Fahrenheit using a list comprehension. Formula: F = C * 9/5 + 32</p>
+                    
+                    <div class="content-box">
+                        <h4>Solution</h4>
+                        <code>celsius = [0, 10, 20, 30, 40]
+fahrenheit = [c * 9/5 + 32 for c in celsius]
+print(f"Celsius: {celsius}")
+print(f"Fahrenheit: {fahrenheit}")</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 5: Working with Files -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Part 5: Working with Files</h3>
+                    <div class="lecture-timing">(5 minutes)</div>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"In AI, you'll constantly load data from files. Let's see how Python handles files."</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>Reading Files</h4>
+                    <code># Writing to a file first (so we have something to read)
+data = """Alice,25,Engineer
+Bob,30,Data Scientist
+Charlie,28,ML Engineer
+Diana,32,Researcher"""
+
+with open('team_data.txt', 'w') as file:
+    file.write(data)
+
+print("File created!")
+
+# Reading the file
+with open('team_data.txt', 'r') as file:
+    content = file.read()
+    print("File contents:")
+    print(content)
+
+# Reading line by line
+print("\nReading line by line:")
+with open('team_data.txt', 'r') as file:
+    for line in file:
+        print(f"  {line.strip()}")  # strip() removes newline</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Parsing CSV-style Data</h4>
+                    <code># Parse the CSV-style data
+people = []
+
+with open('team_data.txt', 'r') as file:
+    for line in file:
+        name, age, role = line.strip().split(',')
+        person = {
+            'name': name,
+            'age': int(age),
+            'role': role
+        }
+        people.append(person)
+
+print("Parsed data:")
+for person in people:
+    print(f"  {person['name']} ({person['age']}) - {person['role']}")
+
+# Filter using list comprehension
+engineers = [p for p in people if 'Engineer' in p['role']]
+print(f"\nEngineers: {[p['name'] for p in engineers]}")</code>
+                </div>
+
+                <div class="highlight-box info">
+                    <h4>Note</h4>
+                    <p>In practice, we'll use Pandas for CSV files (next topic!). But it's good to understand the basics.</p>
+                    
+                    <p>The <code>with</code> statement is important:</p>
+                    <ul class="styled-list">
+                        <li>Automatically closes the file</li>
+                        <li>Handles errors gracefully</li>
+                        <li>Always use it for file operations!</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Python Patterns -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Essential Python Patterns for AI/ML</h3>
+                    <div class="lecture-timing">(3 minutes)</div>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Let me show you patterns you'll use constantly in AI work."</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>Common AI/ML Patterns</h4>
+                    <code># Pattern 1: Enumerate (get index and value)
+data = ['cat', 'dog', 'bird']
+for i, animal in enumerate(data):
+    print(f"Index {i}: {animal}")
+
+# Pattern 2: Zip (iterate over multiple lists together)
+features = [1, 2, 3, 4, 5]
+labels = [0, 0, 1, 1, 0]
+
+for feature, label in zip(features, labels):
+    print(f"Feature {feature} has label {label}")
+
+# Pattern 3: Unpacking
+point = (10, 20)
+x, y = point  # Unpack tuple
+print(f"X: {x}, Y: {y}")
+
+# Multiple unpacking
+data = [(1, 0), (2, 0), (3, 1)]
+for x, y in data:
+    print(f"x={x}, y={y}")
+
+# Pattern 4: Any and All
+predictions = [True, True, True]
+print(f"All correct? {all(predictions)}")
+
+predictions = [True, False, True]
+print(f"Any correct? {any(predictions)}")
+
+# Pattern 5: List sorting with key
+students = [
+    {'name': 'Alice', 'score': 85},
+    {'name': 'Bob', 'score': 92},
+    {'name': 'Charlie', 'score': 78}
+]
+
+# Sort by score
+sorted_students = sorted(students, key=lambda s: s['score'], reverse=True)
+print("Sorted by score:")
+for s in sorted_students:
+    print(f"  {s['name']}: {s['score']}")</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Error Handling</h4>
+                    <code># Try-except for handling errors
+def safe_divide(a, b):
+    """Safely divide two numbers."""
+    try:
+        result = a / b
+        return result
+    except ZeroDivisionError:
+        print("Error: Cannot divide by zero!")
+        return None
+    except TypeError:
+        print("Error: Invalid types for division")
+        return None
+
+print(safe_divide(10, 2))   # Works fine
+print(safe_divide(10, 0))   # Catches error
+print(safe_divide(10, "2")) # Catches error
+
+# Common in ML: handle missing data gracefully
+def process_data(data):
+    """Process data with error handling."""
+    try:
+        # Attempt processing
+        result = [x * 2 for x in data]
+        return result
+    except Exception as e:
+        print(f"Error processing data: {e}")
+        return []
+
+print(process_data([1, 2, 3]))      # Works
+print(process_data([1, 'x', 3]))    # Handles error</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing & Summary -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lecture-section">
+                <div class="lecture-header">
+                    <h3 class="lecture-title">Closing & Summary</h3>
+                    <div class="lecture-timing">(2 minutes)</div>
+                </div>
+
+                <div class="content-box">
+                    <h4>Python for AI/ML - Quick Reference</h4>
+                    <code># Variables & Types
+name = "Alice"  # str
+age = 25        # int
+height = 5.6    # float
+active = True   # bool
+
+# Lists (ordered, mutable)
+numbers = [1, 2, 3, 4, 5]
+numbers.append(6)
+first = numbers[0]
+subset = numbers[1:4]
+
+# Dictionaries (key-value)
+person = {"name": "Bob", "age": 30}
+person["email"] = "bob@email.com"
+
+# Control Flow
+if age > 18:
+    status = "adult"
+else:
+    status = "minor"
+
+# Loops
+for i in range(5):
+    print(i)
+
+for item in numbers:
+    print(item)
+
+# Functions
+def calculate_mean(data):
+    return sum(data) / len(data)
+
+# List Comprehensions
+squares = [x**2 for x in range(10)]
+evens = [x for x in range(10) if x % 2 == 0]
+
+# Common patterns
+for i, value in enumerate(numbers):  # Index and value
+    print(i, value)
+
+for x, y in zip(features, labels):   # Parallel iteration
+    print(x, y)
+
+print("✓ Python basics covered!")</code>
+                </div>
+
+                <div class="instructor-script">
+                    <p>"Excellent work! You've just covered (or reviewed) the Python essentials for AI/ML:</p>
+                    
+                    <p><strong>What we covered:</strong></p>
+                    <ul class="styled-list">
+                        <li>✅ Variables, data types, operations</li>
+                        <li>✅ Lists and dictionaries</li>
+                        <li>✅ Control flow (if/else, loops)</li>
+                        <li>✅ Functions and lambda expressions</li>
+                        <li>✅ List comprehensions (the Pythonic way!)</li>
+                        <li>✅ File handling basics</li>
+                        <li>✅ Common AI/ML patterns</li>
+                    </ul>
+
+                    <p><strong>Key Takeaways:</strong></p>
+                    <ol>
+                        <li>Python is readable and intuitive</li>
+                        <li>Lists and dictionaries are your best friends</li>
+                        <li>List comprehensions make code elegant</li>
+                        <li>Functions organize your code</li>
+                        <li>These patterns appear constantly in ML code</li>
+                    </ol>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>What's Next</h4>
+                    <p>Now we move to the libraries that make Python the #1 choice for AI:</p>
+                    <ul class="styled-list">
+                        <li><strong>NumPy:</strong> Arrays and numerical computing</li>
+                        <li><strong>Pandas:</strong> Data manipulation powerhouse</li>
+                        <li><strong>Matplotlib:</strong> Visualizations</li>
+                    </ul>
+                    <p>These three libraries are the foundation of the entire Python data science ecosystem!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Exercises -->
+    <section class="content-section">
+        <div class="container">
+            <div class="interactive-element">
+                <h4>Practice Exercises</h4>
+                
+                <div class="content-box">
+                    <h4>Exercise 1: Data Processing</h4>
+                    <code># Given this raw data, calculate some statistics
+scores = [85, 92, 78, 90, 88, 95, 82, 87]
+
+# Calculate:
+# 1. Mean score
+# 2. Scores above 85
+# 3. Normalized scores (0-1 scale)
+
+# Your code here:</code>
+                </div>
+
+                <div class="content-box">
+                    <h4>Solution</h4>
+                    <code>scores = [85, 92, 78, 90, 88, 95, 82, 87]
+
+# 1. Mean
+mean = sum(scores) / len(scores)
+print(f"Mean: {mean:.2f}")
+
+# 2. Scores above 85
+high_scores = [s for s in scores if s > 85]
+print(f"High scores: {high_scores}")
+
+# 3. Normalized
+min_score = min(scores)
+max_score = max(scores)
+normalized = [(s - min_score) / (max_score - min_score) for s in scores]
+print(f"Normalized: {[f'{n:.2f}' for n in normalized]}")</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="content-section">
+        <div class="container">
+            <div class="topic-navigation">
+                <a href="../session1-1/topic4.html" class="nav-button back">
+                    ← Previous: Environment Setup
+                </a>
+                <a href="./" class="nav-button session">
+                    ↑ Session Overview
+                </a>
+                <div class="nav-button next" style="opacity: 0.5; pointer-events: none;">
+                    Next: NumPy Essentials → (Coming Soon)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>
+                    <strong>Week 1, Session 1.2, Topic 1: Python Refresher</strong><br>
+                    Part of the AI Engineering Course - 6-Week Intensive Curriculum
+                </p>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+                    © 2024 AI Engineering Course. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../../assets/js/navigation.js"></script>
+    <script src="../../../assets/js/topic-common.js"></script>
+    <script>
+        // Initialize topic-specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Topic completion tracking for Week 1, Session 2, Topic 1
+            window.TopicCommon.initializeTopicCompletion(1, 2, 1);
+        });
+    </script>
+</body>
+</html>
